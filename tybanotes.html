@@ -14,6 +14,24 @@
     .qr-img { max-width: 150px; margin: 0 auto; display: block; }
     .copy-btn { background-color: #0a9396; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; margin-top: 0.5rem; }
     .copy-btn:hover { background-color: #94d2bd; }
+    .go-btn { background-color: #005f73; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: bold; transition-colors duration-200; margin-top: 1rem; }
+    .go-btn:hover { background-color: #0a9396; }
+    .action-btn {
+      background-color: #e76f51; /* Vibrant Orange */
+      color: white;
+      padding: 1rem 2.5rem; /* Bigger padding */
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 10px 15px -3px rgba(231, 111, 81, 0.5), 0 4px 6px -2px rgba(231, 111, 81, 0.25); /* More pronounced shadow */
+      font-size: 1.25rem; /* Larger font size */
+    }
+    .action-btn:hover {
+      background-color: #f4a261; /* Lighter Orange on hover */
+      transform: scale(1.05); /* Slight scaling effect */
+      box-shadow: 0 20px 25px -5px rgba(231, 111, 81, 0.7), 0 10px 10px -5px rgba(231, 111, 81, 0.4);
+    }
     .clipboard-message {
       position: fixed;
       top: 20px;
@@ -55,26 +73,25 @@
 
     <!-- All content for the main tasks and thank you message -->
     <div id="main-content">
-      <!-- Beginning Page -->
-      <header class="text-center mb-16">
-        <h1 class="text-5xl md:text-6xl font-black text-[#005f73] uppercase tracking-wider">Welcome & Request for Support</h1>
-        <p class="text-lg text-[#0a9396] mt-4">Hello everyone! I sincerely need your support.<br>
-        I am the Google Student Ambassador, and as part of my internship, I have to show Google how I am driving engagement with Google Gemini. For this, I need people to simply try out some fun prompts.</p>
-        <p class="text-lg mt-2">🙏 Your support will really mean a lot to me because every single interaction helps me reach my engagement target.</p>
-        <p class="text-md mt-2 font-semibold">👉 Once you complete all 5 tasks, you will unlock full access to the Mathematics, Measurement, and Psychophysics notes.</p>
+      <!-- Beginning Page - Updated Section -->
+      <header class="bg-gradient-to-r from-[#005f73] to-[#0a9396] text-white py-16 px-4 text-center rounded-3xl mb-12 shadow-lg">
+        <h1 class="text-5xl md:text-6xl font-black uppercase tracking-wide leading-tight">Elevate Your Studies: Unlock Major 11 Notes!</h1>
+        <p class="text-lg text-white mt-4 max-w-2xl mx-auto opacity-80">
+          As a Google Student Ambassador, I am working to drive user engagement with Google Gemini. Your participation in these quick, simple tasks is greatly appreciated and helps me achieve my goals.
+          <br>Once you complete all five tasks, you will unlock full access to my complete Major 11 notes.
+        </p>
+        <p class="text-2xl md:text-3xl mt-6 font-bold tracking-tight text-yellow-300">
+          Your valuable support is needed. The process takes less than 3 minutes.
+        </p>
       </header>
-      <!-- Highlight Box for Support -->
-      <div class="bg-yellow-200 border-l-4 border-yellow-500 text-yellow-800 p-4 my-6 text-center rounded-lg shadow-md">
-        <p class="font-semibold text-lg">⚡ Your support is needed! It hardly takes 2–3 minutes of your time. Please do it. ⚡</p>
-      </div>
 
       <!-- Instructions -->
       <section class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-12">
         <h2 class="text-3xl font-bold text-[#005f73] mb-4">Instructions Before Starting</h2>
         <ol class="list-decimal list-inside space-y-2 text-[#001219]">
-          <li>Click the first link below and wait for the Gemini prompt to fully load.</li>
+          <li>Click the first button below and wait for the Gemini prompt to fully load.</li>
           <li>If the prompt does not run automatically, please wait and check the chatbox – the prompt will appear there. Just hit the 'Send' button to start it.</li>
-          <li>⚠ Important: In some cases, nothing may happen. Before clicking the link, copy the prompt text, then paste it into Gemini manually and click the link again.</li>
+          <li>⚠ Important: In some cases, nothing may happen. Before clicking the "launch prompt" button, copy the prompt text, then paste it into Gemini manually and click the button again.</li>
           <li>Once the prompt has run successfully, please take a screenshot of the loaded prompt and upload it on this page.</li>
           <li>After uploading, the next task will automatically unlock for you.</li>
         </ol>
@@ -83,16 +100,20 @@
 
       <!-- Tasks -->
       <section id="tasks-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Task Template -->
+        <!-- Task 1 -->
         <div id="task1" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
           <h2 class="text-2xl font-bold text-[#005f73] mb-3">🎨 Task 1</h2>
           <p class="mb-2 font-semibold">Prompt:</p>
           <p id="prompt1" class="mb-2">Ask me 5 short and simple, multiple choice questions about my personality, one by one, and then tell me what famous artist or designer I am most like.</p>
           <button class="copy-btn" onclick="copyPrompt('prompt1')">Copy Prompt</button>
-          <img class="qr-img mt-4" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=17" alt="Task 1 QR Code">
-          <p class="text-center mt-2 text-sm break-all">
-            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=17" target="_blank" class="underline text-blue-600">https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=17</a>
-          </p>
+          <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=17" target="_blank" class="block mt-4">
+            <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=17" alt="Task 1 QR Code">
+          </a>
+          <div class="text-center mt-4">
+            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=17" target="_blank">
+              <button class="action-btn">Launch Prompt</button>
+            </a>
+          </div>
           <label class="block mt-4">
             Upload Screenshot:
             <input type="file" accept="image/*" onchange="unlockTask(2)">
@@ -100,15 +121,20 @@
           <p class="mt-2 text-xs text-gray-500">Upload screenshot to unlock Task 2</p>
         </div>
 
+        <!-- Task 2 -->
         <div id="task2" class="bg-white rounded-lg shadow-lg p-6 md:p-8 locked">
           <h2 class="text-2xl font-bold text-[#005f73] mb-3">🎉 Task 2</h2>
           <p class="mb-2 font-semibold">Prompt:</p>
           <p id="prompt2" class="mb-2">Help me plan a small, festive get-together for 5 friends at home. Suggest a simple menu, a music playlist theme, and one fun game we can play.</p>
           <button class="copy-btn" onclick="copyPrompt('prompt2')">Copy Prompt</button>
-          <img class="qr-img mt-4" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=16" alt="Task 2 QR Code">
-          <p class="text-center mt-2 text-sm break-all">
-            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=16" target="_blank" class="underline text-blue-600">https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=16</a>
-          </p>
+          <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=16" target="_blank" class="block mt-4">
+            <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=16" alt="Task 2 QR Code">
+          </a>
+          <div class="text-center mt-4">
+            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=16" target="_blank">
+              <button class="action-btn">Launch Prompt</button>
+            </a>
+          </div>
           <label class="block mt-4">
             Upload Screenshot:
             <input type="file" accept="image/*" onchange="unlockTask(3)">
@@ -116,15 +142,20 @@
           <p class="mt-2 text-xs text-gray-500">Unlocks after Task 1 screenshot upload</p>
         </div>
 
+        <!-- Task 3 -->
         <div id="task3" class="bg-white rounded-lg shadow-lg p-6 md:p-8 locked">
           <h2 class="text-2xl font-bold text-[#005f73] mb-3">🎬 Task 3</h2>
           <p class="mb-2 font-semibold">Prompt:</p>
           <p id="prompt3" class="mb-2">Pick a popular historical movie (Bollywood/Tollywood etc.) and point out three major historical inaccuracies in a fun, myth-busting way.</p>
           <button class="copy-btn" onclick="copyPrompt('prompt3')">Copy Prompt</button>
-          <img class="qr-img mt-4" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=15" alt="Task 3 QR Code">
-          <p class="text-center mt-2 text-sm break-all">
-            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=15" target="_blank" class="underline text-blue-600">https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=15</a>
-          </p>
+          <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=15" target="_blank" class="block mt-4">
+            <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=15" alt="Task 3 QR Code">
+          </a>
+          <div class="text-center mt-4">
+            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=15" target="_blank">
+              <button class="action-btn">Launch Prompt</button>
+            </a>
+          </div>
           <label class="block mt-4">
             Upload Screenshot:
             <input type="file" accept="image/*" onchange="unlockTask(4)">
@@ -132,15 +163,20 @@
           <p class="mt-2 text-xs text-gray-500">Unlocks after Task 2 screenshot upload</p>
         </div>
 
+        <!-- Task 4 -->
         <div id="task4" class="bg-white rounded-lg shadow-lg p-6 md:p-8 locked">
           <h2 class="text-2xl font-bold text-[#005f73] mb-3">🗺 Task 4</h2>
           <p class="mb-2 font-semibold">Prompt:</p>
           <p id="prompt4" class="mb-2">I have a week-long break. Suggest a location where I can go with my friends for a weekend getaway.</p>
           <button class="copy-btn" onclick="copyPrompt('prompt4')">Copy Prompt</button>
-          <img class="qr-img mt-4" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=14" alt="Task 4 QR Code">
-          <p class="text-center mt-2 text-sm break-all">
-            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=14" target="_blank" class="underline text-blue-600">https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=14</a>
-          </p>
+          <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=14" target="_blank" class="block mt-4">
+            <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=14" alt="Task 4 QR Code">
+          </a>
+          <div class="text-center mt-4">
+            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=14" target="_blank">
+              <button class="action-btn">Launch Prompt</button>
+            </a>
+          </div>
           <label class="block mt-4">
             Upload Screenshot:
             <input type="file" accept="image/*" onchange="unlockTask(5)">
@@ -148,15 +184,20 @@
           <p class="mt-2 text-xs text-gray-500">Unlocks after Task 3 screenshot upload</p>
         </div>
 
+        <!-- Task 5 -->
         <div id="task5" class="bg-white rounded-lg shadow-lg p-6 md:p-8 locked">
           <h2 class="text-2xl font-bold text-[#005f73] mb-3">🌿 Task 5</h2>
           <p class="mb-2 font-semibold">Prompt:</p>
           <p id="prompt5" class="mb-2">The festive season is here. Suggest 5 creative and eco-friendly ways to decorate my home or hostel room to give it a festive vibe.</p>
           <button class="copy-btn" onclick="copyPrompt('prompt5')">Copy Prompt</button>
-          <img class="qr-img mt-4" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=13" alt="Task 5 QR Code">
-          <p class="text-center mt-2 text-sm break-all">
-            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=13" target="_blank" class="underline text-blue-600">https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=13</a>
-          </p>
+          <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=13" target="_blank" class="block mt-4">
+            <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=13" alt="Task 5 QR Code">
+          </a>
+          <div class="text-center mt-4">
+            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=13" target="_blank">
+              <button class="action-btn">Launch Prompt</button>
+            </a>
+          </div>
           <label class="block mt-4">
             Upload Screenshot:
             <input type="file" accept="image/*" onchange="unlockFinal()">
@@ -1619,6 +1660,100 @@
                     </p>
                 </div>
             </section>
+
+<section id="final-credit" class="mt-20 md:mt-24 w-full max-w-7xl mx-auto flex justify-center">
+    <style>
+        .credit-bg {
+            background-image: linear-gradient(135deg, #1A1A2E, #16213E, #0F3460, #1B262C, #2C0F2F, #1A1A2E);
+            background-size: 300% 300%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: gradient-shift-2 15s linear infinite;
+            color: #E5E7EB;
+            padding: 2rem;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        @keyframes gradient-shift-2 {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .credit-bg::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: conic-gradient(from 0deg, #FF6B6B, #F7C042, #47A8BD, #7FD4A4, #B4E8E8, #7F84E8, #FF6B6B);
+            border-radius: 1rem;
+            z-index: -1;
+            animation: border-rotate 8s linear infinite;
+        }
+
+        @keyframes border-rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .highlight-name {
+            font-weight: 700;
+            display: inline-block;
+            color: #0A9396;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight-name::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 0%, transparent 70%);
+            opacity: 0.8;
+            z-index: -1;
+            animation: text-glow 5s linear infinite;
+        }
+
+        @keyframes text-glow {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+            50% { transform: scale(1.1) rotate(3deg); opacity: 1; }
+        }
+
+        .credit-btn {
+            background: #E5E7EB;
+            color: #001219;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+        }
+
+        .credit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2), 0 0 15px #E5E7EB;
+        }
+    </style>
+    <div class="credit-bg">
+        <h2 class="text-4xl md:text-5xl font-black mb-2 uppercase tracking-wide">A Special Thanks</h2>
+        <p class="text-2xl md:text-3xl font-bold mb-4">
+            This content was curated and created by <span class="highlight-name">Tushar Joshi</span>, a Google Student Ambassador. Your support is greatly appreciated.
+        </p>
+        <a href="https://www.linkedin.com/in/joshi091204" target="_blank" class="credit-btn">
+            <span class="inline-block align-middle mr-2">🔗</span>Connect with Tushar
+        </a>
+    </div>
+</section>
 
   </main>
 
