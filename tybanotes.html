@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Student Ambassador Engagement Flow</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #FEFBF3; color: #001219; }
+    .locked { opacity: 0.5; pointer-events: none; }
+    .qr-img { max-width: 150px; margin: 0 auto; display: block; }
+    .copy-btn { background-color: #0a9396; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; margin-top: 0.5rem; }
+    .copy-btn:hover { background-color: #94d2bd; }
+    .clipboard-message {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+      z-index: 1000;
+    }
+    .clipboard-message.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    /* Smooth transition classes */
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+    .fade-in {
+      opacity: 1;
+      transition: opacity 0.5s ease-in;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body class="px-4 py-12">
+  <div id="clipboard-message" class="clipboard-message">
+    Prompt copied to clipboard!
+  </div>
+  <main class="max-w-7xl mx-auto">
+
+    <!-- All content for the main tasks and thank you message -->
+    <div id="main-content">
+      <!-- Beginning Page -->
+      <header class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-black text-[#005f73] uppercase tracking-wider">Welcome & Request for Support</h1>
+        <p class="text-lg text-[#0a9396] mt-4">Hello everyone! I sincerely need your support.<br>
+        I am the Google Student Ambassador, and as part of my internship, I have to show Google how I am driving engagement with Google Gemini. For this, I need people to simply try out some fun prompts.</p>
+        <p class="text-lg mt-2">🙏 Your support will really mean a lot to me because every single interaction helps me reach my engagement target.</p>
+        <p class="text-md mt-2 font-semibold">👉 Once you complete all 5 tasks, you will unlock full access to the Mathematics, Measurement, and Psychophysics notes.</p>
+      </header>
+      <!-- Highlight Box for Support -->
+      <div class="bg-yellow-200 border-l-4 border-yellow-500 text-yellow-800 p-4 my-6 text-center rounded-lg shadow-md">
+        <p class="font-semibold text-lg">⚡ Your support is needed! It hardly takes 2–3 minutes of your time. Please do it. ⚡</p>
+      </div>
+
+      <!-- Instructions -->
+      <section class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-12">
+        <h2 class="text-3xl font-bold text-[#005f73] mb-4">Instructions Before Starting</h2>
+        <ol class="list-decimal list-inside space-y-2 text-[#001219]">
+          <li>Click the first link below and wait for the Gemini prompt to fully load.</li>
+          <li>If the prompt does not run automatically, please wait and check the chatbox – the prompt will appear there. Just hit the 'Send' button to start it.</li>
+          <li>⚠ Important: In some cases, nothing may happen. Before clicking the link, copy the prompt text, then paste it into Gemini manually and click the link again.</li>
+          <li>Once the prompt has run successfully, please take a screenshot of the loaded prompt and upload it on this page.</li>
+          <li>After uploading, the next task will automatically unlock for you.</li>
+        </ol>
+        <p class="text-red-600 mt-4">⚠ If the internet is slow, please wait patiently for the prompt to finish loading. If you exit too quickly after scanning the QR code, you won’t be able to scan again (it will show as 'already scanned').</p>
+      </section>
+
+      <!-- Tasks -->
+      <section id="tasks-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Task Template -->
+        <div id="task1" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+          <h2 class="text-2xl font-bold text-[#005f73] mb-3">🎨 Task 1</h2>
+          <p class="mb-2 font-semibold">Prompt:</p>
+          <p id="prompt1" class="mb-2">Ask me 5 short and simple, multiple choice questions about my personality, one by one, and then tell me what famous artist or designer I am most like.</p>
+          <button class="copy-btn" onclick="copyPrompt('prompt1')">Copy Prompt</button>
+          <img class="qr-img mt-4" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=17" alt="Task 1 QR Code">
+          <p class="text-center mt-2 text-sm break-all">
+            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=17" target="_blank" class="underline text-blue-600">https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=17</a>
+          </p>
+          <label class="block mt-4">
+            Upload Screenshot:
+            <input type="file" accept="image/*" onchange="unlockTask(2)">
+          </label>
+          <p class="mt-2 text-xs text-gray-500">Upload screenshot to unlock Task 2</p>
+        </div>
+
+        <div id="task2" class="bg-white rounded-lg shadow-lg p-6 md:p-8 locked">
+          <h2 class="text-2xl font-bold text-[#005f73] mb-3">🎉 Task 2</h2>
+          <p class="mb-2 font-semibold">Prompt:</p>
+          <p id="prompt2" class="mb-2">Help me plan a small, festive get-together for 5 friends at home. Suggest a simple menu, a music playlist theme, and one fun game we can play.</p>
+          <button class="copy-btn" onclick="copyPrompt('prompt2')">Copy Prompt</button>
+          <img class="qr-img mt-4" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=16" alt="Task 2 QR Code">
+          <p class="text-center mt-2 text-sm break-all">
+            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=16" target="_blank" class="underline text-blue-600">https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=16</a>
+          </p>
+          <label class="block mt-4">
+            Upload Screenshot:
+            <input type="file" accept="image/*" onchange="unlockTask(3)">
+          </label>
+          <p class="mt-2 text-xs text-gray-500">Unlocks after Task 1 screenshot upload</p>
+        </div>
+
+        <div id="task3" class="bg-white rounded-lg shadow-lg p-6 md:p-8 locked">
+          <h2 class="text-2xl font-bold text-[#005f73] mb-3">🎬 Task 3</h2>
+          <p class="mb-2 font-semibold">Prompt:</p>
+          <p id="prompt3" class="mb-2">Pick a popular historical movie (Bollywood/Tollywood etc.) and point out three major historical inaccuracies in a fun, myth-busting way.</p>
+          <button class="copy-btn" onclick="copyPrompt('prompt3')">Copy Prompt</button>
+          <img class="qr-img mt-4" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=15" alt="Task 3 QR Code">
+          <p class="text-center mt-2 text-sm break-all">
+            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=15" target="_blank" class="underline text-blue-600">https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=15</a>
+          </p>
+          <label class="block mt-4">
+            Upload Screenshot:
+            <input type="file" accept="image/*" onchange="unlockTask(4)">
+          </label>
+          <p class="mt-2 text-xs text-gray-500">Unlocks after Task 2 screenshot upload</p>
+        </div>
+
+        <div id="task4" class="bg-white rounded-lg shadow-lg p-6 md:p-8 locked">
+          <h2 class="text-2xl font-bold text-[#005f73] mb-3">🗺 Task 4</h2>
+          <p class="mb-2 font-semibold">Prompt:</p>
+          <p id="prompt4" class="mb-2">I have a week-long break. Suggest a location where I can go with my friends for a weekend getaway.</p>
+          <button class="copy-btn" onclick="copyPrompt('prompt4')">Copy Prompt</button>
+          <img class="qr-img mt-4" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=14" alt="Task 4 QR Code">
+          <p class="text-center mt-2 text-sm break-all">
+            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=14" target="_blank" class="underline text-blue-600">https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=14</a>
+          </p>
+          <label class="block mt-4">
+            Upload Screenshot:
+            <input type="file" accept="image/*" onchange="unlockTask(5)">
+          </label>
+          <p class="mt-2 text-xs text-gray-500">Unlocks after Task 3 screenshot upload</p>
+        </div>
+
+        <div id="task5" class="bg-white rounded-lg shadow-lg p-6 md:p-8 locked">
+          <h2 class="text-2xl font-bold text-[#005f73] mb-3">🌿 Task 5</h2>
+          <p class="mb-2 font-semibold">Prompt:</p>
+          <p id="prompt5" class="mb-2">The festive season is here. Suggest 5 creative and eco-friendly ways to decorate my home or hostel room to give it a festive vibe.</p>
+          <button class="copy-btn" onclick="copyPrompt('prompt5')">Copy Prompt</button>
+          <img class="qr-img mt-4" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=13" alt="Task 5 QR Code">
+          <p class="text-center mt-2 text-sm break-all">
+            <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=13" target="_blank" class="underline text-blue-600">https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=13</a>
+          </p>
+          <label class="block mt-4">
+            Upload Screenshot:
+            <input type="file" accept="image/*" onchange="unlockFinal()">
+          </label>
+          <p class="mt-2 text-xs text-gray-500">Unlocks after Task 4 screenshot upload</p>
+        </div>
+      </section>
+
+      <!-- Final Step (hidden by default) -->
+      <section id="final-step" class="bg-[#005f73] text-white rounded-lg shadow-lg p-6 md:p-8 mt-12 text-center hidden">
+        <h2 class="text-3xl font-bold mb-4">🎉 Thank You!</h2>
+        <p class="text-lg mb-4">Thank you very much for your support! I am so glad you completed all tasks. 🙏</p>
+        <button onclick="showNotes()" class="block w-full text-center bg-[#0a9396] hover:bg-[#94d2bd] px-8 py-6 rounded-lg text-2xl font-bold transition-all duration-500 ease-in-out">
+          Continue to Notes
+        </button>
+      </section>
+    </div>
+
+    <!-- The Notes Section - This section is hidden by default -->
+    <!-- FIX: Removed nested <main> tag for valid HTML and consistent layout. The content below will now correctly inherit the layout from the parent <main> tag. -->
+    <section id="notes-section" class="hidden opacity-0">
+        <!-- Topic 1: Original Title -->
+        <header class="mb-16 md:mb-20">
+            <div class="bg-[#005f73] rounded-lg shadow-lg p-6 md:p-8 text-center border-t-8 border-[#ee9b00]">
+                <h1 class="text-4xl md:text-6xl font-black text-white uppercase tracking-wide">Mathematics, Measurement, and Psychophysics</h1>
+                <p class="text-sm text-gray-300 mt-4">Based on the work of S. S. Stevens, Harvard University</p>
+            </div>
+        </header>
+
+            <section id="introduction" class="mb-16 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-[#005f73] mb-4">The Stature of a Science</h2>
+                        <p class="text-base leading-relaxed">
+                            The maturity and sophistication of a scientific discipline are often judged by how extensively it uses mathematics. However, it's a common misconception that mathematics is itself an empirical science. It isn't. Mathematics is a <strong class="text-[#005f73]">formal, logical, symbolic system</strong>—an intricate game built upon signs, symbols, and a strict set of rules for their manipulation. It doesn't conduct experiments to discover truths about the natural world.
+                        </p>
+                    </div>
+                    <div class="bg-[#005f73] text-white rounded-lg shadow-lg p-6 md:p-8">
+                         <h3 class="text-xl font-bold text-[#94d2bd] mb-4">The Virtue of Mathematics</h3>
+                         <blockquote class="border-l-4 border-[#ee9b00] pl-4 italic">
+                            <p>The virtue that makes mathematics more than trivial is its capacity to serve as a model for events and relations in the empirical world.</p>
+                         </blockquote>
+                         <p class="mt-4 text-[#d8f3dc]">This power to mirror reality is what elevates mathematics from a mere abstract exercise into an indispensable tool for science. It provides a structured language to describe and predict the workings of the universe.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="goodness-of-fit" class="mb-16 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#005f73]">The "Goodness of Fit"</h2>
+                    <p class="text-md text-[#0a9396] mt-1">How well does the mathematical model represent reality?</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <p class="text-base leading-relaxed mb-6">Like any model, the mathematical system never achieves a perfect one-to-one correspondence with the complexities of the material universe. The model "fits" better in some scientific domains than others. For example, it models the trajectory of a planet with incredible accuracy, but modeling human emotion is far more challenging.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <p class="text-base leading-relaxed">Generally, the fit between the model and reality becomes tighter and more reliable as the things we study become more <strong class="text-[#0a9396]">measurable</strong>. When we can assign consistent, well-founded numerical values to dimensions and qualities, we move from the realm of subjective description to objective analysis.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#ca6702]">
+                            <blockquote class="text-lg font-semibold text-center italic text-[#001219]">
+                                 "When description gives way to measurement, calculation replaces debate."
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="measurement-in-psychology" class="mb-16 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="md:col-span-2 bg-[#005f73] text-white rounded-lg shadow-lg p-6 md:p-8 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">Measurement: A Core Concern of Psychology</h2>
+                        <p class="text-lg text-[#94d2bd] max-w-3xl mx-auto">
+                            Measurement is not just a tool, but a central goal, especially in experimental psychology and psychophysics. While it remains a distant aspiration in fields exploring uncharted human complexities, it is the immediate objective where variables have been carefully disentangled.
+                        </p>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                         <h2 class="text-2xl font-bold text-[#005f73] mb-4">The Role of Psychophysics</h2>
+                         <p class="text-base leading-relaxed">Measurement is a particular preoccupation of psychophysics. In its older, broader sense, psychophysics is the scientific endeavor that seeks to uncover the fundamental rules and laws connecting two distinct realms:</p>
+                         <ul class="space-y-3 mt-4">
+                            <li class="flex items-start"><span class="text-xl text-[#ee9b00] mr-3">⚡</span><span><strong class="font-semibold">The Environment:</strong> The energetic configurations and stimuli present in the world around us (e.g., light intensity, sound frequency).</span></li>
+                            <li class="flex items-start"><span class="text-xl text-[#ee9b00] mr-3">🧠</span><span><strong class="font-semibold">The Organism:</strong> The subjective responses of living organisms to those stimuli (e.g., perceived brightness, heard pitch).</span></li>
+                         </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-[#005f73] mb-4">A Relative Matter</h2>
+                        <p class="text-base leading-relaxed">It's important to recognize that measurement is not absolute. It is a relative process that varies in several key ways:</p>
+                        <ul class="space-y-3 mt-4">
+                            <li class="flex items-start"><span class="text-xl text-[#ca6702] mr-3">⚖️</span><span><b>Kind and Degree:</b> Different properties require different kinds of scales (e.g., categorical vs. continuous).</span></li>
+                            <li class="flex items-start"><span class="text-xl text-[#ca6702] mr-3">🎯</span><span><b>Type and Precision:</b> The empirical operations and tools we use determine the precision of our measurements, which in turn affects how well our mathematical model fits reality.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="what-is-measurement" class="mb-16 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-6">
+                    <div class="md:col-start-2 md:col-span-4 bg-white rounded-lg shadow-lg p-6 md:p-8 text-center border-t-4 border-[#ee9b00]">
+                        <h2 class="text-3xl font-bold text-[#005f73]">So, What is Measurement?</h2>
+                        <p class="mt-4 text-xl md:text-2xl text-[#001219] leading-relaxed">
+                            In its broadest sense, measurement is the <strong class="text-[#ca6702]">assignment of numerals to objects or events according to rules.</strong>
+                        </p>
+                        <p class="mt-4 text-base text-gray-600">The critical insight is that different rules for assigning numerals lead to fundamentally different kinds of scales and, therefore, different kinds of measurement.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="isomorphism" class="mb-16 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#005f73]">Isomorphism: The Critical Link</h2>
+                    <p class="text-md text-[#0a9396] mt-1">The bridge between the empirical world and the formal system of mathematics.</p>
+                </div>
+                <p class="text-base leading-relaxed mb-6 text-center max-w-4xl mx-auto">Measurement is possible in the first place only because a special kind of correspondence, or <strong class="font-semibold">isomorphism</strong>, exists between two domains:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-[#005f73]">
+                        <h3 class="text-xl font-bold text-[#005f73] mb-3 flex items-center"><span class="text-2xl mr-2">🌍</span>1. The Empirical World</h3>
+                        <p class="text-sm">This includes the observable, concrete relationships among real objects and events.</p>
+                        <p class="text-sm mt-2 italic"><strong>Example:</strong> A collection of rocks can be ordered from lightest to heaviest based on how they feel in your hand.</p>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-[#0a9396]">
+                        <h3 class="text-xl font-bold text-[#005f73] mb-3 flex items-center"><span class="text-2xl mr-2">🔢</span>2. The Formal System</h3>
+                        <p class="text-sm">This is the abstract game of mathematics, where numerals are the "pawns" and operators (like +, -, >) are the "moves."</p>
+                        <p class="text-sm mt-2 italic"><strong>Example:</strong> The properties of the number system allow numerals to be ordered from smallest to largest (e.g., 5 < 10 < 20).</p>
+                    </div>
+                    <div class="md:col-span-2 mt-8 bg-[#005f73] text-white rounded-lg p-6 shadow-lg">
+                        <h3 class="text-xl font-bold text-white mb-2">The Power of a Tight Fit</h3>
+                        <p class="text-[#d8f3dc]">When this correspondence between the model and reality is close and tight, something remarkable happens: we can discover truths about the empirical world simply by manipulating the formal model. This is how we can calculate the flight of a bullet or the course of a comet without ever touching them. We are awed by the power of mathematics to reveal what is beyond our direct vision.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="math-as-invention" class="mb-16 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-[#005f73] mb-4">A Mystical Splendor?</h2>
+                        <p class="text-base leading-relaxed">The ancients saw this predictive power and detected a mystical splendor—proof that number itself ruled the universe. They believed the elegant rules of mathematics were inherent properties of the cosmos that humans had simply discovered.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                         <h2 class="text-2xl font-bold text-[#005f73] mb-4">A Human Invention</h2>
+                         <p class="text-base leading-relaxed">The modern view is different. We see this power as another instance of humanity creating its own powerful tools. Mathematics is a <strong class="text-[#0a9396]">human invention</strong>, like language or chess. Humans don't just play the game; we also invent the rules.</p>
+                         <p class="text-base leading-relaxed mt-4">Of course, the rules for much of mathematics have been deliberately rigged to be isomorphic with our common experiences. This is why putting ten beans with ten other beans is perfectly mirrored by the symbolic statement: <code class="bg-gray-200 p-1 rounded">10 + 10 = 20</code>.</p>
+                    </div>
+                     <div class="md:col-span-2 mt-8 bg-[#ee9b00] text-white rounded-lg shadow-lg p-6 text-center">
+                        <p class="font-semibold">It is interesting to note that a vast amount of what we call mathematics is not isomorphic with any known reality and is, in this sense, scientifically "useless," existing as a purely formal exercise.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="math-as-language" class="mb-16 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#005f73]">Mathematics as a Specialized Language</h2>
+                    <p class="text-md text-[#0a9396] mt-1">The syntax of scientific propositions.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <p class="text-base leading-relaxed mb-4">Ultimately, scientists study the structure of mathematics because it is the language in which they frame their most precise propositions. The author Lancelot Hogben simplified this for the public by explaining that mathematics is the <strong class="font-semibold">language of size</strong>, whereas English is a language of <strong class="font-semibold">sort</strong>.</p>
+                    <div class="bg-gray-50 rounded-lg p-6 border-l-4 border-[#005f73]">
+                        <p class="text-base leading-relaxed">In any case, mathematics is a highly specialized language with an incredibly rich and rigorous syntax. This chapter does not attempt to teach the technicalities of that syntax, but rather to foster an understanding of its primary function in science: to serve as a powerful, abstract model that represents our concrete, empirical operations.</p>
+                        <p class="text-sm mt-4 text-gray-500 italic">For a book on the skills of mathematics applied to psychology, see D. Lewis (1948).</p>
+                    </div>
+                </div>
+            </section>
+            
+            <hr class="my-20 md:my-24 border-gray-400 border-dashed">
+
+            <!-- Topic 2: Syntactics, Semantics, and Pragmatics -->
+            <header class="text-center mb-16 md:mb-20">
+                <h1 class="text-4xl md:text-6xl font-black text-[#005f73] uppercase tracking-wide">Syntactics, Semantics, and Pragmatics</h1>
+                <p class="text-sm text-gray-500 mt-4">Based on the work of S. S. Stevens, Harvard University</p>
+            </header>
+
+            <section class="mb-16 md:mb-20">
+                <p class="text-center text-lg leading-relaxed max-w-4xl mx-auto mb-8">When we analyze the nature and use of any language—whether it's English, mathematics, or computer code—it's helpful to distinguish between three fundamental areas of inquiry, as outlined by Charles W. Morris.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center border-b-4 border-[#005f73]">
+                        <h2 class="text-2xl font-bold text-[#005f73] mb-3 flex items-center justify-center"><span class="text-3xl mr-3">🔗</span>Syntactics</h2>
+                        <p class="text-base leading-relaxed">The study of the relationships <strong class="font-semibold">between signs and other signs</strong>. This is about grammar, structure, and the formal rules of the system.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center border-b-4 border-[#ee9b00]">
+                        <h2 class="text-2xl font-bold text-[#005f73] mb-3 flex items-center justify-center"><span class="text-3xl mr-3">🌍</span>Semantics</h2>
+                        <p class="text-base leading-relaxed">The study of the relationships <strong class="font-semibold">between signs and the objects</strong> they refer to. This is about meaning, representation, and truth.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center border-b-4 border-[#ca6702]">
+                        <h2 class="text-2xl font-bold text-[#005f73] mb-3 flex items-center justify-center"><span class="text-3xl mr-3">🗣️</span>Pragmatics</h2>
+                        <p class="text-base leading-relaxed">The study of the relationships <strong class="font-semibold">between signs and the users</strong> of those signs. This is about context, interpretation, and impact.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="mb-16 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-[#005f73] mb-4">🔗 A Closer Look at Syntactics</h2>
+                        <p class="text-base leading-relaxed">
+                            Syntactics encompasses the formal disciplines of logic, mathematics, and grammar. In this realm, the relationships among signs are completely <strong class="text-[#005f73]">abstracted</strong> from their meaning or their users. Syntactic propositions are devoid of empirical content; they say nothing about the physical world. A statement like <code class="bg-gray-200 p-1 rounded">2+2=4</code> is true because of the rules of arithmetic, not because of any fact about apples or oranges.
+                        </p>
+                    </div>
+                    <div class="bg-[#005f73] text-white rounded-lg shadow-lg p-6 md:p-8">
+                         <h3 class="text-xl font-bold text-[#94d2bd] mb-4">The Concept of Metalanguage</h3>
+                         <blockquote class="border-l-4 border-[#ee9b00] pl-4 italic">
+                            <p>In order to talk about a syntactical system, we have to get out of the system and into another language—a metalanguage.</p>
+                         </blockquote>
+                         <p class="mt-4 text-[#d8f3dc]">When a textbook uses English (the metalanguage) to describe the rules of algebra (the object language), it is operating at a semantic level. The 'objects' being referred to are the signs and rules of algebra itself.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="mb-16 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#005f73]">🌍 A Closer Look at Semantics</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-[#0a9396] mb-3">Rules of Meaning</h3>
+                        <p class="text-base leading-relaxed">Semantics is all about the rules that connect signs to things. If a mathematical formula is to mean something about the world, its terms must be linked by semantic rules to real objects or events. These rules are fundamentally <strong class="font-semibold">arbitrary</strong>—we invent them for our convenience. However, creating good, clear definitions (or "semantical rules") is a notoriously difficult business.</p>
+                        <p class="text-base leading-relaxed mt-4">Ideally, these rules should be <strong class="font-semibold">operational definitions</strong>, which define a concept in terms of the concrete operations used to measure it. It's easy to say, "Let x be the ratio of responsibility to liberalism," but it's incredibly hard to define the concrete operations that would actually measure such abstract concepts.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-[#0a9396] mb-3">Terms vs. Propositions</h3>
+                        <p class="text-base leading-relaxed">There's a crucial distinction between operationally defining individual terms and confirming the truth of a full proposition (a sentence or formula).</p>
+                        <ul class="mt-4 space-y-2 text-sm">
+                            <li><strong class="text-[#005f73]">Valid Terms:</strong> <code class="bg-gray-200 p-1 rounded">H</code> can stand for a man's height in inches, and <code class="bg-gray-200 p-1 rounded">W</code> for his weight in pounds. Both are clearly defined by measurement operations.</li>
+                            <li><strong class="text-red-700]">False Proposition:</strong> But the mathematical sentence <code class="bg-gray-200 p-1 rounded">H = W</code> is empirically false for nearly every man, even though its individual terms are perfectly meaningful.</li>
+                        </ul>
+                         <p class="text-base leading-relaxed mt-4">The operational definition of terms does not guarantee the operational validity of the formulas that connect them.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="mb-16 md:mb-20">
+                <div class="text-center mb-8">
+                     <h2 class="text-3xl font-bold text-[#005f73]">Certainty vs. Probability</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                     <div class="bg-[#005f73] text-white rounded-lg shadow-lg p-6 md:p-8">
+                         <h3 class="text-xl font-bold text-[#94d2bd] mb-3">Syntactic Truth: Absolute</h3>
+                         <p>Mathematical theorems and equations are either <strong class="text-white">absolutely true or absolutely false</strong>. They are true if they are consistent with the rules of the game; they are false if they break the rules. This provides complete certainty.</p>
+                         <blockquote class="mt-4 border-l-4 border-[#ee9b00] pl-4 italic text-gray-300">
+                            But these absolutely true statements say nothing at all, unfortunately, about objects or events, and they reveal no secrets of nature.
+                         </blockquote>
+                    </div>
+                     <div class="bg-[#005f73] text-white rounded-lg shadow-lg p-6 md:p-8">
+                         <h3 class="text-xl font-bold text-[#94d2bd] mb-3">Empirical Truth: Probabilistic</h3>
+                         <p>The confirmation of an empirical (semantic) assertion is <strong class="text-white">never absolute and final</strong>. Repeated tests can increase its probability, but they can never clinch its certainty. Induction is not a watertight method. Propositions about nature always have a degree of probability that is less than 100%.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="mb-16 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#005f73]">Why the Model Rarely Fits Perfectly</h2>
+                    <p class="text-md text-[#0a9396] mt-1">Four reasons for the lack of congruity between mathematics and reality.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex items-start"><span class="text-3xl mr-4">📏</span><div><h3 class="font-bold text-[#005f73]">1. Errors of Measurement</h3><p class="text-sm">We can calculate the area of a circle with a computer to thousands of decimal places, but we can never physically measure a real circle with that same level of precision. Empirical operations have inherent limits.</p></div></div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex items-start"><span class="text-3xl mr-4">❓</span><div><h3 class="font-bold text-[#005f73]">2. Uninterpretable Terms</h3><p class="text-sm">Mathematical solutions sometimes yield results that have no physical meaning. The formula for the hypotenuse (<code class="bg-gray-200 p-1 rounded">h²=a²+b²</code>) has both a positive and a negative solution. We simply discard the negative one because "negative length" makes no sense in our empirical world.</p></div></div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex items-start"><span class="text-3xl mr-4">⚛️</span><div><h3 class="font-bold text-[#005f73]">3. The Illusion of Divisibility</h3><p class="text-sm">The rules of classical mathematics assume that numbers and quantities are infinitely divisible. But in the real world, we have reason to believe that matter is not—at a certain point, you reach fundamental particles like quarks and electrons that cannot be divided further.</p></div></div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex items-start"><span class="text-3xl mr-4">🧩</span><div><h3 class="font-bold text-[#005f73]">4. Neglected Aspects</h3><p class="text-sm">Any given mathematical model can only represent a few of the many aspects of a natural phenomenon. Most aspects are neglected, either deliberately for simplicity or by oversight. This shortcoming is fundamentally a matter of semantics—choosing which aspects of reality to link to our signs.</p></div></div>
+                </div>
+            </section>
+            <section class="mb-16 md:mb-20">
+                 <div class="grid grid-cols-1 md:grid-cols-6">
+                    <div class="md:col-start-2 md:col-span-4 bg-white rounded-lg shadow-lg p-6 md:p-8">
+                         <h2 class="text-3xl font-bold text-[#005f73] text-center mb-4">🗣️ A Final Word on Pragmatics</h2>
+                         <p class="text-center text-lg text-gray-700">Pragmatics is the fascinating study of the relationship between signs and their users. It asks how we, as behaving organisms, use signs, react to them, and how our choice of signs influences our behavior and the behavior of others.</p>
+                         <div class="mt-6 bg-gray-50 rounded-lg p-6 border-l-4 border-[#ca6702]">
+                              <blockquote class="italic text-gray-800">
+                                   <p class="mb-4">"The paralytic terror instilled by those clever souls who can calculate in those who cannot is a problem in applied pragmatics."</p>
+                                   <p>This same terror, the author notes, is what routed the philosopher Diderot when the mathematician Euler confronted him at the Russian court with a nonsensical algebraic formula, claiming it proved the existence of God. Diderot, intimidated by the symbolic language he didn't understand, was left speechless.</p>
+                                   <footer class="text-sm text-right mt-2 text-gray-500">— Anecdote from E. T. Bell (1937)</footer>
+                              </blockquote>
+                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-20 md:my-24 border-gray-400 border-dashed">
+            
+            <!-- Topic 3: The Mathematical Model -->
+            <header class="text-center mb-16 md:mb-20">
+                <h2 class="text-4xl md:text-5xl font-black text-[#005f73]">The Mathematical Model</h2>
+                <p class="text-lg text-[#0a9396] mt-2">Understanding the formal, arbitrary game of mathematics.</p>
+            </header>
+
+            <section id="mathematical-model" class="mb-16 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                    <div class="md:col-span-3 bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <p class="text-base leading-relaxed mb-4">
+                            The formal rules of mathematics are essentially <strong class="font-semibold">arbitrary conventions</strong>, a fact that was discovered surprisingly late in history. Early mathematicians felt it was proper to prove their work empirically—for instance, demonstrating that 2 + 2 = 4 by physically sorting pebbles. The seeming success of this "pebble counting" makes it difficult for us to grasp a crucial truth:
+                        </p>
+                         <blockquote class="bg-gray-50 p-4 rounded-lg border-l-4 border-[#ca6702]">
+                            <p class="italic text-gray-800">"...the process of induction, which is basic in all experimental sciences, is forever banned from rigorous mathematics."</p>
+                            <footer class="text-sm text-right mt-2 text-gray-500">— T. Dantzig (1939)</footer>
+                         </blockquote>
+                    </div>
+                    <div class="md:col-span-2 bg-[#005f73] text-white rounded-lg shadow-lg p-6 md:p-8">
+                         <h3 class="text-xl font-bold text-[#94d2bd] mb-4">Isomorphism: A Perfect Mirror</h3>
+                         <p class="text-sm text-[#d8f3dc]">Counting on our fingers doesn't "prove" arithmetic. It only shows that the rules of number, invented by our ancestors, are <strong class="font-semibold text-white">isomorphic</strong> (sharing a similar structure) with certain digital operations. We aren't startled by this because the system of natural numbers was created for this exact purpose: to provide a formal model representing what we do with fingers, pebbles, and cattle. A forgotten genius built a model for an aspect of the empirical world, just as an architect draws a plan for a house.</p>
+                    </div>
+                </div>
+            </section>
+            <section id="correspondence-principle" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-[#005f73] text-center mb-6">The Principle of Correspondence</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="text-center">
+                            <div class="flex justify-center items-center space-x-4">
+                                <span class="text-6xl">🐟</span>
+                                <span class="text-4xl text-gray-400">↔️</span>
+                                <span class="text-6xl">🪨</span>
+                            </div>
+                             <p class="mt-4 text-lg font-semibold text-[#005f73]">One Fish, One Pebble</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-[#0a9396] mb-3">The Birth of Cardinal Number</h3>
+                            <p class="text-base leading-relaxed">While the exact details are lost to history, we can imagine this primitive model-making began with the <strong class="font-semibold">principle of correspondence</strong>—the basic mathematical process of setting things in a one-to-one relation. An early human might have added one pebble to a pile for each fish in their cache. If a fish was stolen, they could discover the theft by pairing each remaining fish against a pebble and finding one pebble left over.
+                            <br><br>
+                            This process of pairing members until one or both groups are exhausted leads directly to the concept of <strong class="font-semibold">cardinal number</strong>. If both the fish and pebble piles pair up evenly with none left over, the two groups have the same cardinal number.</p>
+                        </div>
+                    </div>
+                     <div class="mt-8 bg-gray-50 p-4 rounded-lg border-t-4 border-[#ee9b00]">
+                        <p class="text-sm text-center">This foundational idea is why the logicians Frege (1879) and Russell (1901) independently defined a number as <strong class="font-semibold">"the class of all classes that show a one-to-one correspondence with a given class."</strong> In this view, the cardinal number '3' is the abstract class that contains all trios (three fingers, three pebbles, three enemies, etc.).</p>
+                     </div>
+                </div>
+            </section>
+            <section id="cardinal-vs-ordinal" class="mb-16 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#005f73]">From Matching to Counting: Two Types of Number</h2>
+                    <p class="text-md text-[#0a9396] mt-1">A crucial leap required a new kind of system.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold text-[#005f73] mb-3 flex items-center"><span class="text-3xl mr-3">#️⃣</span>Cardinal Number</h3>
+                        <p class="text-base leading-relaxed border-l-4 border-[#005f73] pl-4">Resting solely on the principle of <strong class="font-semibold">correspondence (matching)</strong>, cardinality implies no counting. As Dantzig notes, a primitive human who knew only cardinality would need a "motley array of models," unsystematized and ad hoc. The ubiquity of this principle is seen in early numeration like that of Egypt, where 'nine' was written as nine individual strokes.</p>
+                        <p class="mt-4 font-mono text-center text-lg bg-gray-100 p-2 rounded">Egyptian '9': | | | | | | | | |</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold text-[#005f73] mb-3 flex items-center"><span class="text-3xl mr-3">🥇</span>Ordinal Number</h3>
+                        <p class="text-base leading-relaxed border-l-4 border-[#005f73] pl-4">To create a counting process, a system was needed. Our ancestors had to arrange their models in an <strong class="font-semibold">ordered sequence</strong>. One can imagine them setting successive piles of pebbles in an order where any pile, when paired with its neighbor, would have exactly one pebble left over. This property of <strong class="font-semibold">succession</strong> is called <strong class="font-semibold">ordinality</strong>.</p>
+                         <p class="mt-4 text-center text-lg bg-gray-100 p-2 rounded">Names in order: "One," "Two," "Three..."</p>
+                    </div>
+                    <div class="md:col-span-2 mt-8 bg-gray-100 rounded-lg p-4 text-center">
+                         <p class="text-sm text-gray-700">Once they named these successive piles (creating semantical rules) and remembered their order, they were ready to count. They could pair their fish against the successive names until the fish ran out. The name assigned to the last fish became the <strong class="font-semibold">ordinal number</strong> of the catch.</p>
+                    </div>
+                </div>
+            </section>
+            <section id="controversy" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                    <div class="md:col-span-2">
+                        <h2 class="text-2xl font-bold text-[#005f73] mb-4">A Note on History and Controversy</h2>
+                        <p class="text-base leading-relaxed">While this fanciful account clarifies the distinction, as history it is undoubtedly false. It's pleasant to surmise that cardinal (matching) came before ordinal (ordering), but as Dantzig notes, <strong class="font-semibold">"Wherever any number technique exists at all, both aspects of number are found."</strong></p>
+                        <p class="text-base leading-relaxed mt-4">The reader should be aware that these basic notions are intensely controversial. At the frontiers of mathematics, one of the noisiest recent battles was between the <strong class="font-semibold">Formalists</strong> (led by Hilbert) and the <strong class="font-semibold">Intuitionists</strong> (led by Weyl and Brouwer). The account here aligns with the formalist tradition. Intuitionist Weyl, for example, argued it is "unquestionable that the concept of ordinal number is the primary one."</p>
+                    </div>
+                    <div class="bg-[#005f73] text-white p-6 rounded-lg text-center">
+                        <span class="text-5xl">⚔️</span>
+                        <h3 class="text-xl font-bold mt-2">Formalists<br><span class="text-base font-normal">vs.</span><br>Intuitionists</h3>
+                    </div>
+                </div>
+            </section>
+            <section id="arithmetic" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                     <h2 class="text-3xl font-bold text-[#005f73] text-center mb-6">From Ordinality to Arithmetic</h2>
+                     <p class="text-center max-w-2xl mx-auto mb-8">The names for numbers, which we call <strong class="font-semibold">numerals</strong>, have a "natural" sequence or ordered succession. This fact makes an arithmetic possible—that is, a set of rules for combining numerals. These rules were chosen so the system could continue to serve as a model for the empirical world of pebbles.</p>
+                     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                          <div class="bg-gray-50 p-4 rounded-lg border-b-4 border-green-500">
+                               <span class="text-4xl">➕</span>
+                               <h3 class="font-bold mt-2">Addition</h3>
+                               <p class="text-sm">Reflects pooling two piles of pebbles.</p>
+                          </div>
+                           <div class="bg-gray-50 p-4 rounded-lg border-b-4 border-red-500">
+                               <span class="text-4xl">➖</span>
+                               <h3 class="font-bold mt-2">Subtraction</h3>
+                               <p class="text-sm">Reflects taking one pile from another.</p>
+                          </div>
+                           <div class="bg-gray-50 p-4 rounded-lg border-b-4 border-blue-500">
+                               <span class="text-4xl">✖️</span>
+                               <h3 class="font-bold mt-2">Multiplication</h3>
+                               <p class="text-sm">Is simply successive addition.</p>
+                          </div>
+                           <div class="bg-gray-50 p-4 rounded-lg border-b-4 border-yellow-500">
+                               <span class="text-4xl">➗</span>
+                               <h3 class="font-bold mt-2">Division</h3>
+                               <p class="text-sm">Is simply successive subtraction.</p>
+                          </div>
+                     </div>
+                     <div class="mt-8 text-center bg-[#005f73] text-white p-6 rounded-lg">
+                        <p class="text-lg">Thus, we arrive at whole-number arithmetic. And incidentally in the process, as Stevens notes, we have achieved something profound: a <strong class="font-semibold text-[#94d2bd]">scale of measurement</strong>—a formal scale for measuring the attribute of <strong class="font-semibold text-[#94d2bd]">"numerosity,"</strong> which is the cardinal property of physical collections of objects.</p>
+                     </div>
+                </div>
+            </section>
+
+            <hr class="my-20 md:my-24 border-gray-400 border-dashed">
+            
+            <!-- Topic 4: Numeration -->
+            <header class="mb-16 md:mb-20 text-center">
+                <h1 class="text-5xl md:text-7xl font-black text-[#005f73] uppercase tracking-wider">Numeration</h1>
+                <p class="text-lg text-[#0a9396] mt-2">The Momentous Accomplishment of Writing Numbers</p>
+            </header>
+            <section id="the-challenge" class="mb-16 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="md:col-span-2 bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <p class="text-center text-lg max-w-3xl mx-auto">
+                            The invention of ordered numerals was a monumental achievement. But once the concept existed, how should the numbers be written? Creating a unique symbol for every single number is a theoretical possibility, but it is a <strong class="font-semibold text-[#ca6702]">"psychological suicide."</strong> The human brain simply cannot store and recall an infinite, unstructured list of symbols. The cognitive load would be overwhelming.
+                            <br><br>
+                            To be practical and usable by everyone, a system of numeration must have two fundamental features:
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 text-center">
+                            <div class="bg-gray-50 p-6 rounded-lg">
+                                <span class="text-5xl">✍️</span>
+                                <h3 class="text-xl font-bold mt-2 text-[#005f73]">A Learnable Set of Symbols</h3>
+                                <p class="mt-2 text-sm">A small, manageable group of characters that can be easily memorized. Our modern system, for example, uses only ten symbols (0, 1, 2, 3, 4, 5, 6, 7, 8, 9) to represent every number imaginable.</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg">
+                                <span class="text-5xl">➡️</span>
+                                <h3 class="text-xl font-bold mt-2 text-[#005f73]">A Learnable Rule of Succession</h3>
+                                <p class="mt-2 text-sm">A clear and consistent method for knowing how to produce the next number in any sequence. For example, we know that after 9 comes 10, which isn't a new symbol but a combination of existing ones according to a rule.</p>
+                            </div>
+                        </div>
+                         <p class="text-center text-base max-w-3xl mx-auto mt-8">Because of these psychological limits, nearly all successful systems are based on a <strong class="font-semibold">repetitive procedure</strong>. This core idea allows us to write enormous numbers by cleverly combining the symbols for smaller ones, reusing our small set of characters over and over.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-[#0a9396] mb-3">A Flawed Design: The Roman System</h3>
+                        <p class="text-base leading-relaxed mb-4">Many systems, like the Roman, are based on an obvious cardinal principle: I, II, and III stand for 1, 2, and 3. This is psychologically easy and intuitive, provided the only goal is to indicate magnitude. However, the moment we try to create an arithmetic—to perform calculations—we find it impossible to devise a multiplication table for Roman numerals that a human can actually learn. The core problem, we now know, is its lack of two critical features:</p>
+                        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                            <p class="font-mono text-center text-lg">MCDLVIII &times; XIX = ?</p>
+                            <p class="text-center text-sm mt-2">This is incredibly difficult because the system has <strong class="font-semibold">no zero</strong> (no symbol for an empty column) and therefore can make no use of the <strong class="font-semibold">principle of position</strong>, where a symbol's value changes based on its location.</p>
+                        </div>
+                    </div>
+                    <div class="bg-[#005f73] text-white rounded-lg shadow-lg p-6 flex flex-col justify-center">
+                        <h3 class="text-xl font-bold text-center text-[#94d2bd] mb-3">The Power of "Nothing"</h3>
+                        <p class="text-sm text-center">For all their intellectual brilliance, the Greeks and Romans never invented a symbol to represent an absence of value. The Romans wrote DV for 505. Our system explicitly states: <strong class="font-semibold text-white">five hundreds, no tens, and five units</strong>. The zero holds the tens place, ensuring the first 5 is understood as 500 and not 50. Our ability to signify "no tens" this way is the secret to the power and simplicity of our modern reckoning.</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <blockquote class="bg-white rounded-lg shadow-lg p-8 my-12 text-center border-t-8 border-[#ca6702]">
+                            <span class="text-5xl">💡</span>
+                            <h3 class="text-2xl font-bold text-[#005f73] mt-2">A World-Changing Event</h3>
+                            <p class="mt-2 max-w-2xl mx-auto italic">"When viewed in this light, the achievement of the unknown Hindu who some time in the first centuries of our era discovered the principle of position assumes the proportions of a world event."</p>
+                            <footer class="text-sm text-gray-500 mt-2">— T. Dantzig</footer>
+                            <p class="mt-4 bg-gray-50 p-3 rounded-lg inline-block">The Hindu word for this revolutionary concept was <strong class="font-semibold">sunya</strong>, meaning "empty" or "blank," presumably because it was first used to mark an empty column on a physical counting board.</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+            <section id="number-bases" class="mb-16 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#005f73]">Anatomical Accidents: The Base of a System</h2>
+                     <p class="text-md text-[#0a9396] mt-1">Why do we count in tens? The answer is surprisingly simple and has nothing to do with mathematics.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-[#005f73] mb-3 text-center">Base Ten (Decimal)</h3>
+                        <p class="text-sm text-center">Most systems repeat on a base of ten. This choice is an <strong class="font-semibold">"anatomical accident"</strong> and attests to the anthropomorphic (human-centered) nature of our counting. It's because we have ten fingers. There is nothing mathematically sacred about it.</p>
+                        <div class="text-5xl text-center mt-4">🖐️🖐️</div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-[#005f73] mb-3 text-center">Base Two (Binary)</h3>
+                        <p class="text-sm text-center">Modern computing machines use base two because only two numerals are needed (0 and 1), which can be perfectly represented by a physical switch that is either open (0, no current) or closed (1, current). Our number 22 is written <strong class="font-semibold">10110</strong> in binary.</p>
+                        <div class="text-5xl text-center mt-4">🔌</div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-[#005f73] mb-3 text-center">Other Bases</h3>
+                        <p class="text-sm text-center">Any base is mathematically possible. If a three-toed horse had learned to calculate, it would probably have used base six or twelve. The ancient Babylonians famously used a base-60 system.</p>
+                        <div class="text-5xl text-center mt-4">🐴</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mt-8">
+                     <h3 class="text-2xl font-bold text-[#005f73] text-center mb-6">Is Base Ten an Unhappy Choice?</h3>
+                     <p class="text-center max-w-2xl mx-auto mb-6">Many have argued that base eight (octal) would have been a better choice for humans. The advantage is allegedly psychological: it would make mental calculations easier because it naturally allows for successive <strong class="font-semibold">halvings</strong> and doublings, which are the simplest numerical operations for the human mind. Compare successive doubling in both systems:</p>
+                     <div class="overflow-x-auto">
+                         <table class="min-w-full divide-y divide-gray-200 mt-4">
+                             <thead class="bg-gray-50">
+                                 <tr>
+                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Base Ten</th>
+                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Base Eight</th>
+                                 </tr>
+                             </thead>
+                             <tbody class="bg-white divide-y divide-gray-200">
+                                 <tr><td class="px-6 py-2 whitespace-nowrap font-mono">1</td><td class="px-6 py-2 whitespace-nowrap font-mono">1</td></tr>
+                                 <tr><td class="px-6 py-2 whitespace-nowrap font-mono">2</td><td class="px-6 py-2 whitespace-nowrap font-mono">2</td></tr>
+                                 <tr><td class="px-6 py-2 whitespace-nowrap font-mono">4</td><td class="px-6 py-2 whitespace-nowrap font-mono">4</td></tr>
+                                 <tr><td class="px-6 py-2 whitespace-nowrap font-mono">8</td><td class="px-6 py-2 whitespace-nowrap font-mono text-red-600 font-bold">10</td></tr>
+                                 <tr><td class="px-6 py-2 whitespace-nowrap font-mono">16</td><td class="px-6 py-2 whitespace-nowrap font-mono text-red-600 font-bold">20</td></tr>
+                                 <tr><td class="px-6 py-2 whitespace-nowrap font-mono">32</td><td class="px-6 py-2 whitespace-nowrap font-mono text-red-600 font-bold">40</td></tr>
+                                 <tr><td class="px-6 py-2 whitespace-nowrap font-mono">64</td><td class="px-6 py-2 whitespace-nowrap font-mono text-red-600 font-bold">100</td></tr>
+                             </tbody>
+                         </table>
+                     </div>
+                     <p class="text-center mt-6 text-sm">As Tingley points out, the world's moneys, weights, and measures often try to follow this doubling/halving principle, but our base-ten system makes it impractical (e.g., a quarter is an awkward 2.5 dimes). In a base-eight system, all ratios could be exactly two, making change-counting vastly easier for everyone. But alas, anatomy has chosen our base for us, and mere psychological advantage is unlikely to ever change it.</p>
+                </div>
+            </section>
+
+            <hr class="my-20 md:my-24 border-gray-400 border-dashed">
+            
+            <!-- This is where the new section will be inserted -->
+            <header class="mb-16 md:mb-20 text-center">
+                <h1 class="text-5xl md:text-7xl font-black text-[#005f73] uppercase tracking-wider">Extension of the Number Domain</h1>
+                <p class="text-lg text-[#0a9396] mt-2">The Journey into Irrational, Complex, and Arbitrary Numbers</p>
+            </header>
+ <section id="the-journey-begins" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-8">
+                    <p class="text-center text-lg max-w-4xl mx-auto">
+                        The positive integers—the simple counting numbers that early in history became ordered into a system of <strong class="font-semibold">ordinal numbers</strong>—are only a small part of what we now call the <strong class="font-semibold text-[#ca6702]">domain of number</strong>. The story of mathematics is not one of simple discovery, but one that discloses successive, hard-won extensions to this domain, each one painfully and laboriously achieved against great intellectual resistance.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-[#005f73] mb-3 flex items-center"><span class="text-3xl mr-3">⚖️</span>The First Accretion: Fractions</h3>
+                        <p class="text-base leading-relaxed">The first new elements to join the number family seem to have been the fractions, or, as we call them, the <strong class="font-semibold">positive rational numbers</strong>. With these new elements added, the mathematical model became adequate not only for representing countable things (like pebbles) but also for things that vary in magnitude, like length and weight. While unit fractions date back to Ahmes of Egypt (c. 1700 B.C.), and even the great Euclid considered commensurable ratios of the form m/n, he did not himself regard these ratios as actual numbers themselves in the same way he viewed integers.</p>
+                    </div>
+                    <div class="bg-[#005f73] text-white rounded-lg shadow-lg p-6 md:p-8 flex flex-col justify-center">
+                        <h3 class="text-xl font-bold text-center text-[#94d2bd] mb-3">The Rationale for New Numbers</h3>
+                        <p class="text-sm text-center">If later men were less conservative than Euclid in admitting new elements to the domain, the interesting question is why. This is not to inquire into Euclid's temperament, but to pose the problem of the rationale of new numbers. What should they be? What criteria must they satisfy? The answer to this question was not known to the ancients, who never mastered the distinction between the formal model of math and the empirical world of objects, and who put their trust in empirical induction. The possibility of <strong class="font-semibold">syntactics</strong> (the study of signs and rules) divorced from any consideration of <strong class="font-semibold">semantical definitions</strong> is a modern discovery. It is only when we make this distinction explicit that we can formulate criteria for the admission of new numbers to the number union.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="principle-of-permanence" class="mb-16 md:mb-20">
+                <blockquote class="bg-white rounded-lg shadow-lg p-6 md:p-8 text-center border-t-8 border-[#ee9b00]">
+                    <span class="text-5xl">📜</span>
+                    <h2 class="text-3xl font-bold text-[#005f73] mt-2">The Principle of Permanence</h2>
+                    <p class="mt-4 max-w-3xl mx-auto italic text-lg">In 1867, Hankel gave this idea a name: the <strong class="font-semibold">principle of the permanence of the formal laws</strong>. Put crudely, the idea is this: any new number is admitted to the "union" of numbers provided it obeys the old rules of arithmetic. Just as a new state must agree to obey federal laws, new numbers must behave themselves when the operations of addition, multiplication, etc., are applied. Because rational fractions exhibit the proper decorum, we vote them in.</p>
+                </blockquote>
+            </section>
+            
+            <section id="new-citizens" class="mb-16 md:mb-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-[#005f73]">Forcing New Numbers into Existence</h2>
+                    <p class="text-md text-[#0a9396] mt-1">New kinds of numbers don't step forth from nowhere; the attempt to apply the rules of arithmetic universally is what occasions them.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-[#0a9396] mb-3">Negative Numbers: The "Absurd" Becomes Essential</h3>
+                        <p>We subtract 4 from 7 and get 3. But suppose we subtract 7 from 4? In the system of natural numbers, this subtraction is not possible. Until about the time of Descartes, such operations were ruled out as "absurd" or "fictitious." But, if we admit <strong class="font-semibold">negative numbers</strong>, subtraction is always possible. After years of struggle and controversy, these "absurd" new outlanders became naturalized citizens. In analogous fashion, rational fractions had wormed their way into citizenship because they made division always possible.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-[#0a9396] mb-3">Mathematics as a Syntactical Sport</h3>
+                        <p>With the introduction of negative numbers under this "principle of permanence," mathematics so changed its aspect that men began to see it as a <strong class="font-semibold">syntactical sport</strong>. Faced with numbers generated by taking something large from something small (e.g., 4 - 7 = -3), it becomes harder to regard arithmetic as only a system of concrete magnitudes and easier to see it as a formal, symbolic game. It becomes more obviously impossible to prove arithmetic empirically, as the ancients tried to do.</p>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-[#0a9396] mb-3">An Amusing Consequence</h3>
+                        <p>An amusing thing happens once negative numbers are admitted. Felix Klein quotes Max Simon: "whereas negative numbers were created to make the operation of subtraction possible without any exceрtion, subtraction as an independent operation ceased to exist by virture of that creation." Subtraction becomes merely the addition of a negative number (e.g., 7 - 4 is the same as 7 + [-4]).</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-[#0a9396] mb-3">Giving Meaning to the Abstract</h3>
+                        <p>Of course, once new formal elements have been introduced, it often becomes possible to relate them by <strong class="font-semibold">semantical rules</strong> to real-world events. In bookkeeping, a minus sign may mean you owe the bank money. In geometry, it can be interpreted as rotation through 180 degrees, so that negative numbers refer to distance in the direction opposite to that indicated by positive numbers.</p>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 md:col-span-2">
+                        <h3 class="text-xl font-bold text-[#0a9396] mb-3">The Arrival of Irrational Numbers</h3>
+                        <p>Again applying the principle of permanence (unconsciously perhaps), mathematicians introduced the <strong class="font-semibold">irrational numbers</strong> into Western Europe in the sixteenth century. Irrationals are necessary to the solution of equations like x² - 2 = 0. The solution, √2, is not a rational number because it is not expressible as the ratio of two integers. But because irrational numbers fit into the formal rules of arithmetic, they pay their way as useful, law-abiding tenants of the realm.</p>
+                    </div>
+                </div>
+            </section>
+           
+            <section id="deeper-into-irrationals" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-[#005f73] text-center mb-6">The Unspeakable Secret of the Greeks</h2>
+                    <p class="text-center max-w-4xl mx-auto mb-6">Actually the Greeks were well aware of the existence of <strong class="font-semibold">incommensurable ratios</strong>. They knew that the diagonals of most right triangles are irrational—incommensurable with the sides—a discovery so profound and unsettling it was celebrated by Pythagoras with the sacrifice of a hundred oxen. The Greeks even had a word for it: <strong class="font-semibold">"unexpressible."</strong> This term tells us better than the Latin-derived "irrational" that these ratios are not contrary to reason but are merely undepictable by integers.</p>
+                    <blockquote class="bg-red-50 border-l-4 border-red-500 p-4 rounded text-center mt-6 max-w-3xl mx-auto">
+                        <p>But the Pythagoreans viewed the irrationals with mixed emotions. Their entire worldview was that whole numbers and their ratios ruled the universe, and these "imperfections" were a terrifying threat. We are told that members of the order were sworn to secrecy not to reveal them to outsiders. As Dantzig quotes Proclos: <strong class="font-semibold">"It is told that those who first brought out the irrationals from concealment into the open perished in shipwreck, to a man."</strong></p>
+                    </blockquote>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-[#0a9396] mb-3">Algebraic vs. Transcendental Numbers</h3>
+                        <p class="text-base leading-relaxed">As we have seen, the <strong class="font-semibold">algebraic irrationals</strong> (like √2) forced their way into the number domain because they were needed to solve certain algebraic equations. But an interesting question, not settled until 1844, remained: do irrational numbers exist that are <strong class="font-semibold">not</strong> algebraic? In other words, are there numbers that are the solution to no algebraic equation having rational coefficients?</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                         <h3 class="text-xl font-bold text-[#0a9396] mb-3">The Discovery of Transcendentals</h3>
+                        <p class="text-base leading-relaxed">In 1873, Hermite astonished the mathematical world by proving that the number <strong class="font-semibold">e</strong> (2.718...) was one such number. In 1882, Lindemann did the same for <strong class="font-semibold">π</strong>. These belong to the category known as <strong class="font-semibold">transcendental numbers</strong>, for, as Euler put it, they "transcend the power of algebraic methods." These numbers form the backbone of applied math, including most logarithms and trigonometric ratios.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="complex-numbers" class="mb-16 md:mb-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-[#005f73]">The Birth of Imaginary Numbers</h2>
+                    <p class="text-md text-[#0a9396] mt-1">A dramatic new extension into the "impossible."</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <p class="text-center max-w-4xl mx-auto mb-8">With the addition of transcendentals, the realm of number became fatter and fuller than primitive man could have imagined. But even in this rich <strong class="font-semibold">real domain</strong>, simple things were still impossible. For example, we cannot solve the equation: <strong class="font-semibold">x² + 1 = 0</strong>, because a solution is <strong class="font-semibold">√-1</strong>, which has the appearance of nonsense. For centuries, the impulse to write this was inhibited. It was the Italian, Cardan, who in 1545 first dared, albeit apologetically, to denote this "fiction" by a symbol.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="font-bold text-[#005f73] text-lg mb-2">An "Empty Play Upon Symbols"</h3>
+                            <p class="text-sm">Once symbolized as <strong class="font-semibold">i</strong>, these <strong class="font-semibold">imaginary numbers</strong> were combined with real numbers (e.g., x + iy) to create <strong class="font-semibold">complex numbers</strong>. They were developed from the purest mathematical motives, with no application to concrete matters even suspected. They were born in a vacuum of abstraction, "without the approval, and even against the desires of individual mathematicians."</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="font-bold text-[#005f73] text-lg mb-2">An Unexpected Application</h3>
+                            <p class="text-sm">As it turned out, a simple geometric interpretation (representing x+iy as a point on a plane) led directly to practical applications. The symbol <strong class="font-semibold">i</strong> corresponds to a 90-degree rotation. This makes complex algebra a must for engineers dealing with alternating currents, where it perfectly models resistance and reactance. What began as an abstract fiction became an indispensable tool.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 bg-[#005f73] text-white p-6 rounded-lg text-center">
+                        <p class="text-lg">In 1748, Euler revealed a remarkable relation between integers, transcendentals, and imaginaries, often called the most beautiful equation in mathematics:</p>
+                        <p class="font-mono text-4xl mt-2">e<sup>πi</sup> = -1</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="beyond-the-rules" class="mb-16 md:mb-20">
+                <blockquote class="bg-white rounded-lg shadow-lg p-6 md:p-8 text-center border-t-8 border-red-500">
+                    <span class="text-5xl">💥</span>
+                    <h2 class="text-3xl font-bold text-[#005f73] mt-2">Breaking the Law: Beyond Complex Numbers</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg">This survey concludes by noting that still other kinds of numbers were added to the domain (<strong class="font-semibold">quaternions, matrices, algebraic ideals</strong>). But these extensions required a revolutionary step: relaxing the rules. The "permanence of the formal laws" had to be shorn of its dominion. It was the revolutionary insight of Hamilton that to extend algebra to "n-dimensional" numbers, he had to revoke the commutative law of multiplication—the "obvious" rule that <strong class="font-semibold">a × b = b × a</strong>.</p>
+                    <p class="mt-4 font-mono text-xl bg-red-50 p-3 rounded-lg inline-block">In Hamilton's system of quaternions: a × b ≠ b × a</p>
+                </blockquote>
+            </section>
+
+            <section id="conclusion" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 text-center">
+                     <h2 class="text-3xl font-bold text-[#005f73]">A Concluding Perspective on Mathematical Freedom</h2>
+                     <p class="mt-4 italic max-w-4xl mx-auto text-lg">If we are to point a moral in all this, it is that the rules and postulates of a formal system are <strong class="font-semibold">arbitrary conventions</strong>. The "rule of permanence" turned out to be not so permanent. As Bell calls it, it is a "notorious and discredited" principle. The modern attitude is one of complete freedom:</p>
+                     <blockquote class="mt-4 text-base bg-gray-50 p-4 rounded-lg max-w-2xl mx-auto">"In the same way that a novelist invents characters, dialogues and situations of which he is both author and master, the mathematician devises at will the postulates upon which he bases his mathematical systems."</blockquote>
+                </div>
+            </section>
+
+            <section id="summary-of-numbers" class="mb-16 md:mb-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-[#005f73]">A Summary of the Number Domain</h2>
+                    <p class="text-lg text-[#0a9396] mt-2">Bringing together the vast and abstract world of numbers.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <p class="text-center text-lg max-w-4xl mx-auto">
+                        Leaving out the super-complex numbers like quaternions, we can now summarize the number domain we have explored. The journey is perhaps best captured in a powerful quotation from Carl Friedrich Gauss, believed to be the greatest mathematician yet born, and a diagram illustrating the structure of the number system.
+                    </p>
+                     <blockquote class="bg-gray-50 border-l-4 border-[#005f73] p-6 rounded my-8">
+                        <p class="italic text-gray-700">Wrote Gauss in 1831:</p>
+                        <p class="mt-4 text-lg text-[#001219]">"Our general arithmetic, far surpassing in extent the geometry of the ancients, is entirely the creation of modern times. Starting originally from the notion of absolute integers, it has gradually enlarged its domain. To integers have been added fractions, to rational quantities the irrational, to positive the negative, and to the real the imaginary.</p>
+                        <p class="mt-4 text-lg text-[#001219]">This advance, however, has always been made at first with timorous and hesitating steps. The early algebraists called the negative roots of equations <strong class="font-semibold">false roots</strong>... But just as no one would hesitate to admit fractions to general arithmetic, although there are so many countable things for which a fraction has no meaning, so we ought not deny to negative numbers the rights accorded to positive... The reality of negative numbers is sufficiently justified... but the imaginary quantities... are still rather tolerated than fully naturalized; they appear more like an <strong class="font-semibold">empty play upon symbols</strong>..."</p>
+                    </blockquote>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mt-8">
+                    <h3 class="text-2xl font-bold text-[#005f73] text-center mb-6">Visualizing the Number System</h3>
+                    <p class="text-center max-w-4xl mx-auto mb-8">The table representing the number domain can be arranged as a breakdown of the complex number system into its subdivisions. This is possible because all other numbers are, in a sense, special cases of complex numbers. A real number is simply a complex number where the coefficient of <strong class="font-semibold">i</strong> is zero. A pure imaginary number is a complex number where the real part is zero.</p>
+                    
+                    <div class="p-4 md:p-8 bg-gray-50 rounded-lg flex justify-center">
+                        <img src="https://i.postimg.cc/mr5qGjWR/Screenshot-2025-09-19-132224.png" alt="The Number System Diagram" class="max-w-full h-auto rounded-md shadow-md">
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded text-sm mt-8 max-w-4xl mx-auto">
+                        <p><strong class="font-semibold">A Note on Theory vs. Practice:</strong> It should be pointed out that the philosopher and mathematician Bertrand Russell disliked this convenient hierarchy. He argued that negative numbers (which are relations) and cardinal numbers (which are classes of classes) are fundamentally different kinds of things and not merely subsets of one another. However, he conceded that while this is "an error in theory, it is a convenience in practice."</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mt-8">
+                    <h3 class="text-2xl font-bold text-[#005f73] text-center mb-6">The True Foundation of Mathematics</h3>
+                    <p class="text-center max-w-4xl mx-auto mb-6">What this number system truly teaches us is that, given certain basic postulates about relations within a formal system, the elements of that system generate themselves automatically. As Dantzig says, <strong class="font-semibold">"Arithmetic does not begin with numbers; it begins with criteria."</strong> The mathematicians are only lately becoming explicitly conscious of the rules their predecessors followed unconsciously.</p>
+                    <blockquote class="bg-gray-50 border-l-4 border-[#0a9396] p-6 rounded my-8 italic max-w-3xl mx-auto">
+                        <p>"A mathematician never defines magnitudes in themselves... he defines their equality, their sum and their product, and these definitions determine, or rather constitute, all the mathematical properties of magnitudes... He creates mathematical entities by means of <strong class="font-semibold">arbitrary conventions</strong>, in the same way that the several chessmen are defined by the conventions which govern their moves..."</p>
+                        <cite class="block text-right mt-2 not-italic">- Coutourat (from Bell, 1937)</cite>
+                    </blockquote>
+                    <p class="text-center max-w-4xl mx-auto">The rules create the game of chess, whether we play with ivory pieces or with collar buttons. The practical utility of this inquiry for a psychologist is that it sheds light on our most fundamental problem: the creation of scales of measurement.</p>
+                </div>
+            </section>
+<header class="mb-16 md:mb-20 text-center">
+                <h1 class="text-5xl md:text-7xl font-black text-[#005f73] uppercase tracking-wider">Attributes of Relations</h1>
+                <p class="text-lg text-[#0a9396] mt-2">Understanding the Building Blocks of Mathematical Logic</p>
+            </header>
+
+            <section id="introduction" class="mb-16 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                    <div class="md:col-span-3 bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <p class="text-base leading-relaxed mb-4">
+                            As we have seen, the gist of mathematics lies in the <strong class="font-semibold">relations among its elements</strong>. The recognition of this fact has led to an intricate and specialized theory of relations, which constitutes an important branch of modern logic.
+                        </p>
+                         <p class="text-base leading-relaxed">
+                            Logic, incidentally, is not something apart from mathematics. In the modern view of things, mathematics is a branch of logic, and it turns out that the notion of number and all other mathematical concepts are definable in the field of logic.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 bg-[#005f73] text-white rounded-lg shadow-lg p-6 md:p-8">
+                        <blockquote class="border-l-4 border-[#ee9b00] pl-4 italic">
+                            <p>"It follows that all pure mathematics, in so far as it is deducible from the theory of the natural numbers, is only a prolongation of logic."</p>
+                            <cite class="block text-right mt-2 not-italic text-gray-300">- Bertrand Russell, 1920</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <section id="attributes-explained" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <p class="text-base leading-relaxed mb-6 text-center max-w-4xl mx-auto">
+                        The technicalities of the calculus of relations need not concern us here, but certain special attributes of relations merit our understanding. For convenience, we may arrange these attributes in four groups of three attributes each. All the relations we shall be interested in are typified by some combination of four attributes, drawn one from each of these four groups. The four categories have to do with <strong class="font-semibold">reflexivity, symmetry, transitivity, and connectedness.</strong>
+                    </p>
+                    
+                    <div class="overflow-x-auto mt-8">
+                        <table class="min-w-full divide-y divide-gray-300 border border-gray-200">
+                            <caption class="text-2xl font-bold text-[#005f73] p-4 bg-gray-50 border-b-2 border-[#005f73]">Table 3: Some Attributes of Relations</caption>
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider w-1/3">Attribute</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider w-2/3">Examples</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <!-- Group I -->
+                                <tr class="bg-[#005f73] text-white">
+                                    <th colspan="2" class="px-6 py-3 text-lg font-bold text-center tracking-wider">Group I: Reflexivity</th>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Reflexive</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Equal to</strong> (x = x for all values of x), <strong class="text-gray-700">similar to</strong>, <strong class="text-gray-700">includes</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Mesoreflexive</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Reciprocal of</strong> (x may or may not be the reciprocal of x)</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Irreflexive</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Greater than</strong> (it is not true for any x that x > x), <strong class="text-gray-700">older than</strong>, <strong class="text-gray-700">not equal to</strong></td>
+                                </tr>
+                                <!-- Group II -->
+                                <tr class="bg-[#ee9b00] text-white">
+                                     <th colspan="2" class="px-6 py-3 text-lg font-bold text-center tracking-wider">Group II: Symmetry</th>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Symmetrical</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Equal to</strong> (if x = y then y = x), <strong class="text-gray-700">not equal to</strong>, <strong class="text-gray-700">sibling of</strong>, <strong class="text-gray-700">proportional to</strong>, <strong class="text-gray-700">spouse of</strong></td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Mesosymmetrical</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Not greater than</strong> (if x ≯  y then y may be equal to or less than x), <strong class="text-gray-700">angry at</strong>, <strong class="text-gray-700">includes</strong>, <strong class="text-gray-700">brother of</strong></td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Asymmetrical</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Greater than</strong> (if x > y then y ≯ x), <strong class="text-gray-700">father of</strong>, <strong class="text-gray-700">successor to</strong></td>
+                                </tr>
+                                <!-- Group III -->
+                                 <tr class="bg-[#ca6702] text-white">
+                                     <th colspan="2" class="px-6 py-3 text-lg font-bold text-center tracking-wider">Group III: Transitivity</th>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Transitive</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Equal to</strong> (if x = y and y = z then x = z), <strong class="text-gray-700">greater than</strong>, <strong class="text-gray-700">ancestor of</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Mesotransitive</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Not equal to</strong> (if x ≠ y and y ≠ z then x may or may not equal z), <strong class="text-gray-700">angry at</strong>, <strong class="text-gray-700">in love with</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Intransitive</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Father of</strong> (if x is father of y and y is father of z, then x is not father of z), <strong class="text-gray-700">successor to</strong></td>
+                                </tr>
+                                <!-- Group IV -->
+                                <tr class="bg-[#0a9396] text-white">
+                                     <th colspan="2" class="px-6 py-3 text-lg font-bold text-center tracking-wider">Group IV: Connectedness</th>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Connected</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Greater than</strong> (in the series of natural numbers, if any two different items are selected, one of them is greater than the other)</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Mesoconnected</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Ancestor of</strong> (given any two people, one may or may not be the ancestor of the other)</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">Unconnected</td>
+                                    <td class="px-6 py-4 text-sm"><strong class="text-gray-700">Alike</strong> (given any two fingerprints, neither is like the other)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="connectedness-and-field" class="mb-16 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-[#005f73] mb-3">Understanding "Connected" Relations</h3>
+                        <p>The import of the fourth category is clarified by Russell's definition: "A relation is connected when, given any two terms of its field, the relation holds between the first and the second or between the second and the first." In other words, a relation is connected if it holds between <strong class="font-semibold">all pairs of items</strong> in a specified field. Connected relations are necessary (but not sufficient) to the arrangement of things in a series.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-[#005f73] mb-3">The Importance of "Field"</h3>
+                        <p>It is an interesting exercise to think up examples and to assign them their proper attributes. In so doing, remember that it is essential to specify the <strong class="font-semibold">"field" of the relation</strong>, i.e., the class of things related—whether natural numbers, real numbers, all people, some people, triangles, etc.—before a proper assignment can be made.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="other-attributes" class="mb-16 md:mb-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-[#005f73]">Functions and Other Attributes</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <p class="mb-4">Other attributes of relations are sometimes distinguished. For example, a relation may be:</p>
+                        <ul class="space-y-3 text-sm">
+                            <li><strong class="font-semibold text-base text-[#0a9396]">One-one:</strong> square of, husband of</li>
+                            <li><strong class="font-semibold text-base text-[#0a9396]">One-many:</strong> father of</li>
+                            <li><strong class="font-semibold text-base text-[#0a9396]">Many-one:</strong> relation of son to father, square root of</li>
+                            <li><strong class="font-semibold text-base text-[#0a9396]">Many-many:</strong> grandparent of</li>
+                        </ul>
+                        <p class="mt-4">For mathematics the <strong class="font-semibold">one-one relation</strong> is of great importance, because it is involved in all relations of the form, "the so-and-so of such-and-such," e.g., the king of Siam, the handle of the pump, the square of x, the log of y, etc.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                         <h3 class="text-xl font-bold text-[#005f73] mb-3">Descriptive Functions</h3>
+                        <p>Relations of this sort are what Russell means by the term <strong class="font-semibold">function</strong>. In the mathematical sense, the phrase "y is the so-and-so of x" defines a function in which x is the argument of the function and y is the value of the function for the argument x. These are <strong class="font-semibold">descriptive functions</strong>, and in this sense "the wife of Socrates" is as much a function as are the more mathematical formulations.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="key-combinations" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-[#005f73] text-center mb-6">Key Combinations of Attributes</h2>
+                    <p class="text-center max-w-4xl mx-auto mb-8">Confining our attention to the properties of relations listed in Table 3, we can single out certain combinations of attributes that are of especial moment. They are important because they characterize basic mathematical relations in the field of number.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-gray-50 border-l-4 border-[#005f73] p-6 rounded-lg">
+                            <h3 class="font-bold text-lg mb-2">The Relation of Identity (=)</h3>
+                            <p>This relation is <strong class="font-semibold">reflexive, symmetrical, transitive, and unconnected.</strong></p>
+                        </div>
+                        <div class="bg-gray-50 border-l-4 border-[#005f73] p-6 rounded-lg">
+                            <h3 class="font-bold text-lg mb-2">The Relation "Successor to"</h3>
+                            <p>This relation is <strong class="font-semibold">irreflexive, asymmetrical, intransitive, and mesoconnected.</strong></p>
+                        </div>
+                        <div class="md:col-span-2 bg-[#005f73] text-white p-6 rounded-lg mt-4">
+                            <h3 class="font-bold text-xl text-center text-[#94d2bd] mb-3">The Foundation of Serial Order</h3>
+                            <p class="text-center">One of the most interesting combinations applies to relations that are <strong class="font-semibold">irreflexive, asymmetrical, transitive, and connected.</strong> A little thought will show that a relation of this sort establishes a serial order. As a matter of fact, for the criterion of an ordering relation we would need to state only the three properties, asymmetrical, transitive, and connected, because if a relation is transitive and asymmetrical it is also irreflexive. (The properties of relations are not always independent.) Examples of relations having the three attributes that define order include such relations as <strong class="font-semibold">greater than</strong> and <strong class="font-semibold">less than</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+<header class="mb-16 md:mb-20 text-center">
+                <h1 class="text-5xl md:text-7xl font-black text-[#005f73] uppercase tracking-wider">The Postulates of Order</h1>
+                <p class="text-lg text-[#0a9396] mt-2">Formal Assumptions for Characterizing Linear Order</p>
+            </header>
+
+            <section id="introduction" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <p class="text-base leading-relaxed mb-4">
+                        Since the business of setting things in rank order is important to many psychological inquiries, let us consider how we might characterize linear order by a set of formal assumptions. These assumptions, or postulates as they are often called, are due to Huntington. When we make them, we are laying down the conditions—the "demands"—that any system must satisfy if it is to be classed as ordered. The word "postulate" is from the Latin <em class="italic">postulare</em>, meaning "to demand."
+                    </p>
+                    <p class="text-base leading-relaxed">
+                        First we introduce a symbol, $<$, and we leave it completely undefined. It may stand for any one of a number of relations, e.g., less than, precedes, older than, or above. We also make use of the symmetrical relations expressed by the symbol $\ne$, meaning "is different from."
+                    </p>
+                </div>
+            </section>
+
+            <section id="the-postulates" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#ca6702]">
+                    <h2 class="text-3xl font-bold text-[#005f73] text-center mb-6">The Three Postulates of Order</h2>
+                    <p class="text-center max-w-4xl mx-auto mb-8">Given a class of elements, we let a, b, and c be any elements of the class. The relation $< $ is then assumed to obey the following rules:</p>
+                    
+                    <div class="space-y-6 max-w-2xl mx-auto">
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#005f73]">
+                            <h3 class="text-xl font-bold text-[#005f73] mb-2">Postulate $O_1$</h3>
+                            <p class="text-base leading-relaxed">If $a \ne b$, then either $a < b$ or $b < a$.</p>
+                            <p class="text-sm text-gray-600 mt-2">
+                                <span class="font-semibold">In simpler terms:</span> Given any two different items in the set, one must always be related to the other. This ensures the set is <strong class="font-semibold">connected</strong>.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#ee9b00]">
+                            <h3 class="text-xl font-bold text-[#005f73] mb-2">Postulate $O_2$</h3>
+                            <p class="text-base leading-relaxed">If $a < b$, then $a \ne b$.</p>
+                            <p class="text-sm text-gray-600 mt-2">
+                                <span class="font-semibold">In simpler terms:</span> An item can never be related to itself. This ensures the relation is <strong class="font-semibold">asymmetrical</strong> and also means it is <strong class="font-semibold">irreflexive</strong>.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#0a9396]">
+                            <h3 class="text-xl font-bold text-[#005f73] mb-2">Postulate $O_3$</h3>
+                            <p class="text-base leading-relaxed">If $a < b$ and $b < c$, then $a < c$.</p>
+                            <p class="text-sm text-gray-600 mt-2">
+                                <span class="font-semibold">In simpler terms:</span> The relation can be passed along a chain. This ensures the relation is <strong class="font-semibold">transitive</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 bg-[#005f73] text-white p-6 rounded-lg shadow-lg">
+                        <p class="text-center text-lg max-w-3xl mx-auto">
+                            These three demands are imposed upon the relations among the elements of an ordered series. If the three demands are met, the relations are of the sort that define what we mean by linear order. These postulates precisely capture the three essential attributes of an ordering relation: <strong class="font-semibold text-[#94d2bd]">connected, asymmetrical, and transitive.</strong>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <header class="mb-16 md:mb-20 text-center">
+                <h1 class="text-4xl md:text-5xl font-black text-[#005f73] uppercase tracking-wider">Criteria for Postulates</h1>
+                <p class="text-lg text-[#0a9396] mt-2">The Principles of Postulation</p>
+            </header>
+
+            <section id="introduction" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <p class="text-base leading-relaxed mb-4">
+                        Let us now take a moment to discuss the business of postulation. Since postulates are merely the assumptions we make about relations, it is clear that initially they are very easy to come by. As Russell said when he was scolding those who postulate that an irrational number is the limit of the sequence of fractions that approach it, "The method of 'postulating' what we want has many advantages; they are the same as the advantages of theft over honest toil" (1920, p. 71).
+                    </p>
+                    <p class="text-base leading-relaxed">
+                        But whether postulation is thievery depends upon the circumstances. Russell objects to the process only when it is used to dodge a problem that honest toil could solve. In setting up the initial postulates of a mathematical system we are not trying to duck a difficulty; we are trying to pare away the irrelevant nonessentials in order to get a clear view of what constitutes the essence of the system.
+                    </p>
+                    <p class="text-base leading-relaxed mt-4">
+                        Generally, we want to see how few notions we can leave undefined and still generate all the propositions and theorems of the system. Consequently, there are criteria that are applied to postulates in order to prove their fitness to serve. The most important of these criteria are <strong class="text-[#ca6702]">consistency, independence, and sufficiency</strong>. The first of these is a must, while the other two are in a sense optional.
+                    </p>
+                </div>
+            </section>
+
+            <section id="criteria-details" class="mb-16 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-l-4 border-[#005f73]">
+                        <h2 class="text-2xl font-bold text-[#005f73] mb-4">Consistency</h2>
+                        <p class="text-base leading-relaxed mb-4">
+                            Consistency is demonstrated if a system in which there are no known contradictions can be shown to fit the postulates. The postulates of order are consistent because systems like the natural numbers and the points on a line satisfy them, provided the proper interpretation is made of the symbol $<$.
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+                            <li>For the natural numbers, this symbol may mean "less than."</li>
+                            <li>For the points on a line, it may mean "precedes."</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-l-4 border-[#ee9b00]">
+                        <h2 class="text-2xl font-bold text-[#005f73] mb-4">Independence</h2>
+                        <p class="text-base leading-relaxed mb-4">
+                            Independence means that no one of the postulates can be derived from the others. The requirement of independence is not logically essential, because mere duplication or partial overlap among postulates does not invalidate the system they govern. However, independence is economically and esthetically desirable, as it furthers the cause of elegance.
+                        </p>
+                        <p class="text-sm text-gray-600 italic">
+                            You can test the independence of the postulates of order by thinking up interpretations of the symbol $<$ for which some one of the postulates is false while the others are true. Begin, for example, by letting $<$ mean "is the ancestor of."
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-2 bg-white rounded-lg shadow-lg p-6 md:p-8 border-l-4 border-[#ca6702]">
+                        <h2 class="text-2xl font-bold text-[#005f73] mb-4">Sufficiency (Categoricalness)</h2>
+                        <p class="text-base leading-relaxed mb-4">
+                            Sufficiency is a property that may or may not be required of a set of postulates, depending on our purpose. It refers to the ability of the postulates to determine a single system, as opposed to several systems that are not mutually isomorphic. Two systems are isomorphic if the elements of one system can be paired off one-to-one with the elements of the other system. It turns out that the postulates of order are not sufficient to determine a single system.
+                        </p>
+                        <p class="text-base leading-relaxed">
+                            For example, these postulates can be satisfied by a finite set of integers (e.g., the numbers from 1 to 10) and by the infinite set of all integers. Obviously, these two sets cannot be put into one-to-one correspondence.
+                        </p>
+                        <p class="text-base leading-relaxed mt-4">
+                            In contrast with the postulates of order, the fundamental postulates of algebra are sufficient to determine a single system. In this connection it is probably in order to call attention to a general principle: the negation of one of the postulates governing a system has the effect of making the system more general.
+                        </p>
+                        <p class="text-base leading-relaxed mt-4">
+                            In other words, it becomes easier to find instances that satisfy the postulates when their number is limited. Thus, we have already seen how the suppression of the commutative law makes it possible to add quaternions to the number system. Another celebrated example is the creation of the numerous non-Euclidean geometries within the amplified elbow room of a curtailed set of postulates (e.g., a set in which the postulate of parallels is suppressed).
+                        </p>
+                    </div>
+                </div>
+            </section>
+             <header class="mb-16 md:mb-20 text-center">
+                <h1 class="text-4xl md:text-5xl font-black text-[#005f73] uppercase tracking-wider">The Postulates of Algebra</h1>
+                <p class="text-lg text-[#0a9396] mt-2">The Distilled Wisdom of an Ancient Art</p>
+            </header>
+
+            <section id="introduction" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <p class="text-base leading-relaxed mb-4">
+                        It is a curious fact that, although the postulational method was applied to geometry two millennia ago, only in modern times were the fundamental assumptions of algebra exhumed from the hodgepodge of rules by which algebraic manipulations are carried out. These basic postulates thus represent the distilled wisdom of more than 3000 years of algebraic juggling.
+                    </p>
+                    <p class="text-base leading-relaxed">
+                        It should be pointed out at once that there is, strictly speaking, no one algebra—there are several. There is at least one for each major division of the number domain. In a certain sense all these algebras are included in the algebra of complex numbers, which is in many respects simpler than any of the more restricted algebras. The postulates of complex algebra as framed by Huntington are consistent, independent, and sufficient, and they are 27 in number, which means that we will not list them here.
+                    </p>
+                    <p class="text-base leading-relaxed mt-4">
+                        Instead we shall have a look at the postulates of ordinary algebra which Harkin sets forth in a scheme having a certain mnemonic merit. All that need be remembered is the word <strong class="text-[#ca6702]">"SCARED,"</strong> which the student of algebra will find quite natural.
+                    </p>
+                    <p class="text-base leading-relaxed mt-4">
+                        First we assume a class or set of elements, a, b, c,... This class is ordered—it obeys the three postulates listed above. Next we assume two operations denoted by + and X, and finally we impose on these symbols the conditions listed in the table below.
+                    </p>
+                </div>
+            </section>
+
+            <section id="postulates" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#005f73]">
+                    <h2 class="text-2xl font-bold text-[#005f73] text-center mb-6">Postulates of Ordinary Algebra</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mnemonic</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Postulate</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="bg-blue-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold text-lg text-[#005f73]">S<br><span class="font-normal text-sm">Synthesis</span></td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        a + b = c
+                                        <br>a X b = c
+                                    </td>
+                                    <td class="px-6 py-4">The <strong class="font-semibold">synthesis</strong> of any two elements produces another element that is in the set.</td>
+                                </tr>
+                                <tr class="bg-green-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold text-lg text-[#0a9396]">C<br><span class="font-normal text-sm">Commutative</span></td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        a + b = b + a
+                                        <br>a X b = b X a
+                                    </td>
+                                    <td class="px-6 py-4">The operations are <strong class="font-semibold">commutative</strong>.</td>
+                                </tr>
+                                <tr class="bg-yellow-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold text-lg text-[#ca6702]">A<br><span class="font-normal text-sm">Associative</span></td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        a + (b + c) = (a + b) + c
+                                        <br>a X (b X c) = (a X b) X c
+                                    </td>
+                                    <td class="px-6 py-4">The operations are <strong class="font-semibold">associative</strong>.</td>
+                                </tr>
+                                <tr class="bg-orange-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold text-lg text-[#ee9b00]">R<br><span class="font-normal text-sm">Reversion</span></td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        a + x = b
+                                        <br>a X x = b (where a ≠ 0)
+                                    </td>
+                                    <td class="px-6 py-4"><strong class="font-semibold">Reversion</strong> from a to b via some element x is always possible, provided a ≠ 0 in multiplication.</td>
+                                </tr>
+                                <tr class="bg-blue-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold text-lg text-[#005f73]">E<br><span class="font-normal text-sm">Existence</span></td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        a + 0 = a
+                                        <br>a X 1 = a
+                                    </td>
+                                    <td class="px-6 py-4">There exists an identity element for addition (0) and for multiplication (1). This is the postulate of <strong class="font-semibold">existence</strong> of identity elements.</td>
+                                </tr>
+                                <tr class="bg-green-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold text-lg text-[#0a9396]">D<br><span class="font-normal text-sm">Distributive</span></td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        a X (b + c) = a X b + a X c
+                                    </td>
+                                    <td class="px-6 py-4">Multiplication <strong class="font-semibold">distributes</strong> over addition.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="conclusion" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <p class="text-base leading-relaxed">
+                        Out of these postulates we get the theorems of algebra. All the complicated propositions that fill the treatises on real algebra stem from this set of simple statements, and all the algebraic theorems can be reduced to the postulates S.C.A.R.E.D. Harkin shows how the elementary rules of cancellation, transposition, etc.—the rules we learn in high school—follow directly from these basic assumptions. These rules appear as theorems, derivable from the table above.
+                    </p>
+                </div>
+            </section>
+            <header class="mb-16 md:mb-20 text-center">
+                <h1 class="text-3xl md:text-4xl font-black text-[#005f73] uppercase tracking-wider">Definitions, Postulates, and Theorems</h1>
+                <p class="text-lg text-[#0a9396] mt-2">The Elements of a Formal System</p>
+            </header>
+
+            <section id="introduction" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#ee9b00]">
+                    <p class="text-base leading-relaxed mb-4">
+                        It is helpful to distinguish among <span class="font-semibold text-[#005f73]">definitions</span>, <span class="font-semibold text-[#0a9396]">postulates</span>, and <span class="font-semibold text-[#ca6702]">theorems</span>. In a formal system like algebra, these distinctions are clear enough.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#005f73]">
+                            <h3 class="font-bold text-[#005f73]">Definitions</h3>
+                            <p class="text-sm mt-1">We introduce new signs and relate them to older, already explicated signs. For example, aⁿ = a X a X.. (for n factors) is a definition used to introduce the exponential sign.</p>
+                        </div>
+                         <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#0a9396]">
+                            <h3 class="font-bold text-[#0a9396]">Postulates</h3>
+                            <p class="text-sm mt-1">These are the statements we make, without proof, about the signs and operators and their relations.</p>
+                        </div>
+                         <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#ca6702]">
+                            <h3 class="font-bold text-[#ca6702]">Theorems</h3>
+                            <p class="text-sm mt-1">These are the statements arrived at by combining the signs in a manner consistent with the postulates and definitions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="analogy-in-psychology" class="mb-16 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-[#005f73] text-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-[#94d2bd] mb-4">An Analogy in an Empirical Science</h2>
+                        <p class="text-base leading-relaxed mb-4">
+                            In an empirical science like psychology, we have a situation that is in some respects analogous to a formal system.
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-base leading-relaxed mb-4">
+                            <li><span class="text-[#d8f3dc] font-semibold">Empirical definitions</span> correspond to formal definitions, relating words or symbols to objects or events.</li>
+                            <li><span class="text-[#d8f3dc] font-semibold">Hypotheses</span> correspond to formal postulates, as they are empirical statements relating defined terms.</li>
+                            <li><span class="text-[#d8f3dc] font-semibold">Empirical propositions</span> correspond to theorems, as they are deduced from the hypotheses.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-l-4 border-[#0a9396]">
+                         <p class="text-base leading-relaxed">
+                            Unlike the theorems of a formal system, which must pass only the test of consistency with the postulates, the empirical propositions of science are subject to the additional test of <span class="font-semibold text-[#0a9396]">empirical confirmation or refutation</span>.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="confusion-of-terms" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#ca6702]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4">The Confusion of Definitions and Propositions</h2>
+                    <p class="text-base leading-relaxed mb-4">
+                        These distinctions are not always preserved, and many statements have the appearance of empirical propositions when they are really definitions, leading to much confusion.
+                    </p>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#ca6702]">
+                        <h3 class="font-semibold text-gray-600 mb-2">A Paradigm for Proper Ordering</h3>
+                        <ul class="list-disc list-inside space-y-2 text-base leading-relaxed">
+                            <li><span class="font-semibold text-[#005f73]">Definition:</span> An instinct is a stereotyped mode of response.</li>
+                            <li><span class="font-semibold text-[#005f73]">Definition:</span> A cat is a four-legged mammal.</li>
+                            <li><span class="font-semibold text-[#0a9396]">Hypothesis:</span> Cats have instincts.</li>
+                            <li><span class="font-semibold text-[#ca6702]">Empirical verification:</span> Do cats show instances of stereotyped behavior?</li>
+                        </ul>
+                    </div>
+                    <p class="text-base leading-relaxed mt-4">
+                        The definitions here are arbitrary conventions for our use of words. Having defined "cat" and "instinct" arbitrarily, we can then compose empirical propositions like the hypothesis, whose validity is a matter to be tested by observation. It is astonishing how frequently we generate pseudo-problems by confusing these statements.
+                    </p>
+                </div>
+            </section>
+
+            <section id="hypothetico-deductive-method" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#0a9396]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4 text-center">The Hypothetico-Deductive Method</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        <div>
+                            <p class="text-base leading-relaxed mb-4">
+                                In the scientific method, we set up hypotheses, deduce consequences, and then confirm or refute them. The process of deducing is carried out at a <span class="font-semibold text-[#0a9396]">formal level</span>, much like the postulational methods of algebra.
+                            </p>
+                            <p class="text-base leading-relaxed">
+                                We choose a formal model (mathematical, logical, or linguistic) and relate its symbols to observable events using <span class="font-semibold text-[#005f73]">semantical rules</span>. We form a proposition (the <span class="font-semibold text-[#ca6702]">hypothesis</span>), then use the formal system's <span class="font-semibold text-[#0a9396]">syntactical rules</span> to transform the hypothesis into a new proposition (the <span class="font-semibold text-[#ee9b00]">deduction</span>). Finally, we test the deduction against nature.
+                            </p>
+                        </div>
+                        <div class="flex flex-col justify-center bg-[#005f73] text-white p-6 rounded-lg shadow-lg">
+                            <h3 class="font-bold text-[#94d2bd] mb-2">Science vs. Mathematics</h3>
+                            <p class="text-sm italic border-l-4 pl-4 border-[#ca6702]">
+                                The main difference is that empirical considerations enter the scientific method. In science, we can test our deductions against nature. In mathematics, the facts of the natural universe are irrelevant. We cannot prove algebra with test tubes.
+                            </p>
+                            <p class="text-sm mt-4 text-[#d8f3dc]">
+                                A deduction in science consists in a transformation of a sentence in accordance with syntactical rules. When the hypothesis is an equation, the procedure is clear. When the hypothesis is in English, the rules are less explicit, but a logic is being used nonetheless.
+                            </p>
+                            <p class="text-sm mt-4 text-[#d8f3dc]">
+                                Fortunately for the future of theory building in the nonquantitative reaches of science, the formalization of logic into a symbolic calculus is presently proceeding apace. This modern logic "provides explicit techniques for manipulating the most basic ingredients of discourse. Its yield for science may be expected to consist also in a contribution of rigor and clarity - a sharpening of the concepts of science" (Quine, p. 8). The well-read psychologist of the future may need to know both Russian and some universal language or pasigraphy like symbolic logic.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+              <header class="mb-16 md:mb-20 text-center">
+                <h1 class="text-5xl md:text-6xl font-black text-[#005f73] uppercase tracking-wider">The Concept of Group</h1>
+                <p class="text-lg text-[#0a9396] mt-2">The Philosophy and Postulates of a Mathematical Group</p>
+            </header>
+
+            <section id="introduction" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#ee9b00]">
+                    <p class="text-base leading-relaxed mb-4">
+                        Let us return now to some further matters in what Russell likes to call the philosophy of mathematics, as opposed to its practice as an art. As we dig downward toward the lower strata of the subject in order to discover what notions are fundamental, we turn up, as we have already seen, some very simple but powerful ideas. The obviousness of some of these concepts does not detract from their importance.
+                    </p>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#005f73] my-6">
+                        <blockquote class="italic text-gray-800">
+                            "It behoves us to remember that... it has taken great men to discover simple things."
+                            <footer class="text-sm mt-2 text-right text-gray-500">— D'Arcy Thompson</footer>
+                        </blockquote>
+                    </div>
+                    <p class="text-base leading-relaxed mb-4">
+                        Two of the most fundamental concepts of mathematics have already been alluded to. They are the notion of a <span class="font-semibold text-[#005f73]">class of elements</span> and the notion of <span class="font-semibold text-[#005f73]">one-to-one correspondence</span> or <span class="font-semibold text-[#005f73]">isomorphism</span>. A third concept is that of a <span class="font-semibold text-[#0a9396]">mathematical group</span>, and a fourth is the closely related concept of <span class="font-semibold text-[#ca6702]">invariance</span>. We shall first try to understand what the mathematician means by a group.
+                    </p>
+                    <p class="text-base leading-relaxed mb-4">
+                        The theory of groups is little more than a century old, but it has already illuminated much of what goes on in geometry and algebra. Perhaps the theory is not the "Open sesame" it was thought to be in its heyday when the demonstration that a given theory obeyed the postulates of a group was considered a momentous accomplishment. Nevertheless, the group is a very basic notion and one that we shall have use for when we consider the problem of devising scales of measurement.
+                    </p>
+                </div>
+            </section>
+
+            <section id="defining-a-group" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#0a9396]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4">What Is a Mathematical Group?</h2>
+                    <p class="text-base leading-relaxed mb-4">
+                        A group in mathematics is a set of operations. The thing that makes these operations a group is the fact that one operation followed by another operation produces a result that is the same as what could have been produced by one or more different operations. This, of course, is a loose definition, and we will need to take up the slack as soon as we consider an example.
+                    </p>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#0a9396] my-6">
+                        <h3 class="font-semibold text-[#0a9396] mb-2">Example: The Baseball Team</h3>
+                        <p class="text-sm leading-relaxed mb-2">
+                            Take the batting order of a baseball team. There are nine players arranged in a sequence. A manager can change the order by interchanging (permuting) players. Any one of the 362,880 possible orders could be achieved by successively substituting one player for another.
+                        </p>
+                        <p class="text-sm leading-relaxed">
+                            For instance, to move the lead-off man to the fourth position, you could make three successive one-for-one substitutions. To get the clean-up man back to the first position, you could make two more substitutions. These five separate substitutions produce the same batting order as a single interchange of the first and fourth players would have. This shows that some combinations of operations are equivalent to other combinations of operations.
+                        </p>
+                    </div>
+                    <p class="text-base leading-relaxed mb-4">
+                        This always impresses the layman as a trivial and obvious matter, and he is astonished to learn that this simple notion, basic to the theory of permutation groups, was essential to Galois' solution of a long-standing riddle about the solvability of equations. These simple permutation groups even turn up in modern descriptions of atomic structure.
+                    </p>
+                </div>
+            </section>
+
+            <section id="postulates" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#ca6702]">
+                    <h2 class="text-2xl font-bold text-[#005f73] text-center mb-6">The Postulates of a Group</h2>
+                    <p class="text-base leading-relaxed text-center mb-8">
+                        We generalize the group concept by laying down the postulates (demands) which a set of operations must satisfy in order to merit the title "group." We assume a set of elements (operations) a, b, c, and a symbol, ∘, denoting their combination.
+                    </p>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200 mt-4 table-fixed">
+                            <thead class="bg-[#005f73] text-white">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-1/4">Postulate</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider w-3/4">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-normal align-top bg-[#d8f3dc]">
+                                        <h3 class="font-bold text-[#005f73] mb-1">Synthesis (Closure)</h3>
+                                        <code class="text-sm font-mono block">a ∘ b = c</code>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal align-top bg-[#d8f3dc]">
+                                        <p class="text-sm">If a and b are members of the set of operations, then a ∘ b is also a member of the set. (This postulate says that the group is closed.)</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-normal align-top bg-[#bde0fe]">
+                                        <h3 class="font-bold text-[#005f73] mb-1">Associative</h3>
+                                        <code class="text-sm font-mono block">(a ∘ b) ∘ c = a ∘ (b ∘ c)</code>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal align-top bg-[#bde0fe]">
+                                        <p class="text-sm">For any three operations, the grouping of the operations does not affect the final result. (This postulate says that the group is associative.)</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-normal align-top bg-[#fef5d0]">
+                                        <h3 class="font-bold text-[#005f73] mb-1">Existence (Identity)</h3>
+                                        <code class="text-sm font-mono block">a ∘ i = i ∘ a = a</code>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal align-top bg-[#fef5d0]">
+                                        <p class="text-sm">There exists a unique "identity" operation, $i$, such that combining any operation with it yields the original operation. (This postulate says that one of the operations must be the doing of nothing, or its equivalent.)</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-normal align-top bg-[#ffdee0]">
+                                        <h3 class="font-bold text-[#005f73] mb-1">Reversion (Inverse)</h3>
+                                        <code class="text-sm font-mono block">a ∘ a′ = i</code>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal align-top bg-[#ffdee0]">
+                                        <p class="text-sm">There is a unique "inverse" operation a′ such that combining a given operation with its inverse yields the identity operation. (This postulate says that we can always backtrack and undo the effect of a given operation.)</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="commutative-group" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#ee9b00]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4">The Commutative or Abelian Group</h2>
+                    <p class="text-base leading-relaxed mb-4">
+                        In the special case when an operation `a` followed by `b` is the same as `b` followed by `a` (a ∘ b = b ∘ a), the group is called <span class="text-[#0a9396] font-semibold">commutative</span>, or <span class="text-[#0a9396] font-semibold">Abelian</span>, named after the mathematician Abel. With this commutative postulate imposed, the group's rules look very much like the postulates of ordinary algebra. The distributive law is not needed to determine a group, Abelian or otherwise.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#005f73]">
+                            <h3 class="font-bold text-[#005f73]">The Addition Group</h3>
+                            <p class="text-sm mt-1 leading-relaxed">
+                                The set of all real numbers forms an Abelian group with respect to the process of addition. The combination symbol in the group postulates becomes the <span class="text-[#0a9396] font-semibold">+</span> sign. The numbers themselves can be seen as the elements or operations.
+                                <br><br>
+                                In this group, the <span class="text-[#ca6702] font-semibold">identity element</span> is 0, since a + 0 = a. The <span class="text-[#ca6702] font-semibold">inverse element</span> for any number `a` is -a, because a + (-a) = 0. Since the commutative law (a + b = b + a) is in force, the addition group is Abelian.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#0a9396]">
+                            <h3 class="font-bold text-[#0a9396]">The Multiplication Group</h3>
+                            <p class="text-sm mt-1 leading-relaxed">
+                                Analogously, all real numbers, with the exception of zero, form an Abelian group under multiplication.
+                                <br><br>
+                                In this case, the <span class="text-[#ca6702] font-semibold">identity element</span> is 1, since a × 1 = a. The <span class="text-[#ca6702] font-semibold">inverse element</span> is the reciprocal, 1/a, because a × (1/a) = 1.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="non-groups" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#ca6702]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4">Operations That Are Not Groups</h2>
+                    <p class="text-base leading-relaxed mb-4">
+                        Curiously enough, some of the common operations of arithmetic do not form groups.
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-base leading-relaxed">
+                        <li>
+                            <span class="text-[#0a9396] font-semibold">Subtraction</span> falls short because it is not associative. For example, `(5 - 3) - 1` does not equal `5 - (3 - 1)`.
+                        </li>
+                        <li>
+                            <span class="text-[#0a9396] font-semibold">Division</span> fails for the same reason. For example, `(8 / 4) / 2` does not equal `8 / (4 / 2)`.
+                        </li>
+                        <li>
+                            Had we only the positive numbers to work with, as in pre-Cartesian days, even the operations of addition would not form a group, because without negative numbers, the reversion (inverse) operation would be impossible.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="other-groups" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#0a9396]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4">Transformations and Invariance</h2>
+                    <p class="text-base leading-relaxed mb-4">
+                        Many different kinds of operations form groups. There are groups of permutations on batting orders, on electrons, or on any other arrangements of things. There are also groups of rotations of objects in space, like those of a wheel with six spokes.
+                    </p>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#ee9b00] my-6">
+                        <p class="text-sm leading-relaxed">
+                            Each rotation of a wheel by 60 degrees leaves the space it occupies <span class="text-[#0a9396] font-semibold">unchanged (invariant)</span>. These 60-degree rotations form a finite group where a 360-degree rotation is the identity operation of no rotation at all. On the other hand, all possible motions of a rigid body in space generate an infinite continuous group.
+                        </p>
+                    </div>
+                    <p class="text-base leading-relaxed mb-4">
+                        From the point of view of measurement, the most interesting groups are those whose elements are algebraic transformations. The simple act of multiplying by a constant, as we do when converting inches to feet, belongs to the <span class="text-[#ca6702] font-semibold">similarity group</span>. When this operation is applied, the property that is preserved (invariant) is the <span class="text-[#ca6702] font-semibold">ratios among distances</span>. Other transformation groups will be discussed when we get to scales of measurement.
+                    </p>
+                </div>
+            </section>
+            
+            <section id="the-word-operation" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 border-t-4 border-[#ca6702]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4">The Dual Meaning of "Operation"</h2>
+                    <p class="text-base leading-relaxed mb-4">
+                        A final word is in order concerning the term "operation." In the paragraphs above, it has carried two different meanings: it has stood both for a <span class="text-[#005f73] font-semibold">mathematical manipulation</span> (e.g., multiplying) and for a <span class="text-[#0a9396] font-semibold">concrete empirical act</span> (e.g., rotating a wheel).
+                    </p>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#0a9396] my-6">
+                        <p class="text-sm leading-relaxed italic">
+                            These two enterprises belong to different realms: one is formal and abstract, while the other is a physical procedure. The use of the same word is deeply ingrained in our language, so we must simply remember that an operation in mathematics can serve as a model for a physical event, but they are not the same thing.
+                        </p>
+                    </div>
+                </div>
+            </section>
+   <header class="mb-16 md:mb-20 text-center">
+                <h1 class="text-4xl md:text-6xl font-black text-[#005f73] uppercase tracking-wider">The Concept of Invariance</h1>
+                <p class="text-lg text-[#0a9396] mt-2">Changelessness in the Midst of Change</p>
+            </header>
+
+            <section id="introduction" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 border-l-8 border-[#ee9b00] relative overflow-hidden">
+                    <p class="text-base leading-relaxed mb-4 relative z-10">
+                        The important thing about a transformation is what it does not transform, or what it leaves <span class="text-[#ca6702] font-semibold">invariant</span>. In the last hundred years, the basic importance of invariance has proven itself in algebra, geometry, and theoretical physics, and we occasionally hear of it in psychology.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-6">
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#005f73] relative z-10">
+                            <blockquote class="italic text-gray-800">
+                                <p class="mb-2">"Invariance is changelessness in the midst of change, permanence in a world of flux, the persistence of configurations that remain the same despite the swirl and stress of countless hosts of curious transformations."</p>
+                                <footer class="text-sm mt-2 text-right text-gray-500">— Keyser, as quoted by Bell (1945)</footer>
+                            </blockquote>
+                        </div>
+                        <div class="relative z-10">
+                            <p class="text-base leading-relaxed">
+                                It took George Boole, a self-taught mathematician and founder of symbolic logic, to highlight the power of this simple principle. While his work was in <span class="text-[#0a9396] font-semibold">algebraic invariance</span>, the displays of invariance in other fields like geometry and physics are much more intuitive for us.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="geometry-and-invariance" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 border-l-8 border-[#0a9396]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4">Invariance in Geometry: The Rubber Sheet</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <p class="text-base leading-relaxed mb-4">
+                                Imagine a figure of intersecting lines and curves drawn on a rubber sheet. As you stretch or distort the sheet, the areas, lengths, and angles obviously change. But some properties remain constant, or invariant.
+                            </p>
+                            <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#0a9396] my-6">
+                                <p class="text-sm leading-relaxed">
+                                    No matter how you stretch the sheet, the <span class="text-[#ca6702] font-semibold">order of the intersections</span> you must pass to trace a path and the <span class="text-[#ca6702] font-semibold">shared boundaries</span> between different areas stay exactly the same.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-6 border border-gray-200">
+                            <h3 class="font-bold text-[#005f73] mb-2">Topology</h3>
+                            <p class="text-sm leading-relaxed">
+                                The study of invariance in "rubber-sheet" geometry is part of the vast and vigorous field known as <span class="text-[#005f73] font-semibold">topology</span>. It's a form of geometry without a metric, which has led some psychologists to hope that it could provide a formal model for representing things that are unmeasurable.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="physics-and-invariance" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 border-l-8 border-[#ca6702]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4">Invariance in Physics: A Source of Power</h2>
+                    <p class="text-base leading-relaxed mb-4">
+                        The importance of invariance as a tool for thought is perfectly exemplified by the classical notion of the <span class="text-[#0a9396] font-semibold">conservation of energy</span>. The total amount of energy in a closed system stays the same even as it transforms from one form, like heat, into another, like electricity.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mt-6">
+                        <div>
+                            <p class="text-base leading-relaxed mb-4">
+                                Similarly, what we mean by the <span class="text-[#ca6702] font-semibold">shape and size</span> of a rigid object are the properties that do not change when we alter the coordinate system used to describe it. In general, the fundamental task of physics is to describe natural phenomena in terms that remain invariant when the frame of reference is changed.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#ee9b00]">
+                            <h3 class="font-bold text-[#0a9396] mb-2">Newton's Second Law</h3>
+                            <p class="text-sm leading-relaxed">
+                                A great example is Newton's second law, which equates force to the time derivative of momentum. This law is powerful because it holds true in all sorts of reference systems—it's invariant under a wide range of conditions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="the-quest-for-generality" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 border-l-8 border-[#005f73]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4">The Scientist's Unconscious Goal</h2>
+                    <p class="text-base leading-relaxed mb-4">
+                        The scientist is usually looking for invariance whether he knows it or not. When a functional relation is discovered between two variables, the next logical question is: "Under what conditions does it hold?" In other words, "Under what transformations is the relation invariant?"
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        <div>
+                            <p class="text-base leading-relaxed mb-4">
+                                This quest for invariant relations is essentially the aspiration toward <span class="text-[#0a9396] font-semibold">generality</span>. In both psychology and physics, the principles we most value are those with wide application.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#ca6702]">
+                            <p class="text-sm leading-relaxed italic">
+                                The conclusion, if we may venture one, is that the empirical scientist can emulate the attitude of mathematicians who followed Boole. By cultivating a love for invariance, he learns to seek uniformities in heterogeneity and to recognize invariance when he sees it.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+ <header class="mb-16 md:mb-20 text-center">
+                <h1 class="text-4xl md:text-5xl font-black text-[#005f73] uppercase tracking-wider">Invariance in Psychology</h1>
+                <p class="text-lg text-[#0a9396] mt-2">The Search for Order in Human Behavior</p>
+            </header>
+
+            <section id="invariance-in-psychology-intro" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 border-l-8 border-[#ee9b00]">
+                    <p class="text-base leading-relaxed mb-4">
+                        Many psychological problems are already conceived as the deliberate search for invariances. Perhaps all psychological problems ought to be so construed, at least when general principles are the goal.
+                    </p>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mt-6">
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#005f73]">
+                            <h3 class="font-bold text-[#0a9396] mb-2">The "Particularizing" Mind</h3>
+                            <p class="text-base leading-relaxed">
+                                This mind notes specific, isolated phenomena: that a visual stimulus has a threshold value, that two men look about the same size, and that flashing lights seem to move.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#ca6702]">
+                            <h3 class="font-bold text-[#0a9396] mb-2">The "Generalizing" Mind</h3>
+                            <p class="text-base leading-relaxed">
+                                This mind takes these isolated observations into a wider frame and discovers overarching invariances:
+                            </p>
+                            <ul class="list-disc list-inside mt-4 space-y-2 text-sm">
+                                <li>The <span class="font-semibold">luminosity or visibility curve</span>—the threshold invariance under simultaneous transformations of frequency and intensity.</li>
+                                <li>The <span class="font-semibold">size-constancy effect</span> (the relative invariance of perceived size under transformations of distance, surrounds, etc.).</li>
+                                <li>The conditions for optimal <span class="font-semibold">phi phenomenon</span> (the partial invariances of perceived movement known as Korte's laws).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="parameters-and-variability" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 border-l-8 border-[#0a9396]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4">Exploring Parameters and Reducing Variability</h2>
+                    <p class="text-base leading-relaxed mb-4">
+                        In general, we enlarge the reach of invariance by exploring the effects of parameters. For example, we might start with a tonal threshold and find, for a given frequency, the intensity that can be heard. That is an invariant point.
+                    </p>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#ee9b00] my-6">
+                        <p class="text-sm leading-relaxed">
+                            Then we can vary another dimension, like the duration of the tone, and construct a three-dimensional surface that gives the threshold invariance under three parameters. Age of the listener, degree of the subject's training, and so on, might be a fourth or fifth parameter.
+                        </p>
+                    </div>
+                    <p class="text-base leading-relaxed mb-4">
+                        As we extend this process, we encroach more and more on the no-man's land of what is usually pigeonholed in the catchall called variability. While variability is never banished from empirical science, successive expansions of the domain of invariance can reduce its dominion to tractable proportions.
+                    </p>
+                </div>
+            </section>
+
+            <section id="iq-and-somatotype" class="mb-16 md:mb-20">
+                <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 border-l-8 border-[#ca6702]">
+                    <h2 class="text-2xl font-bold text-[#005f73] mb-4">IQ and Somatotype as Examples of Invariance</h2>
+                    <p class="text-base leading-relaxed mb-4">
+                        Consider the intelligence quotient—the IQ. Why is this such a capital concept in psychology and education? It's not its value at a single moment, but the fact that it stays relatively constant throughout the growing years.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mt-6">
+                        <div>
+                            <p class="text-base leading-relaxed mb-4">
+                                In this respect, the IQ is analogous to the concept of the <span class="text-[#ca6702] font-semibold">somatotype</span>—the designation of human morphology by means of three variables whose values determine the basic character of a given physique.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-[#005f73]">
+                            <p class="text-sm leading-relaxed">
+                                The apparent invariance of the somatotype under the transformation we call "aging" makes this notion potentially useful. Some degree of invariance is requisite to the importance of both the IQ and the somatotype. The wider their limits of invariance, the more useful they become.
+                            </p>
+                        </div>
+                    </div>
+                    <p class="text-base leading-relaxed italic mt-6">
+                        The scientist seeks measures that will stay put while his back is turned. But, needless to say, the greater number of psychological studies seem not to result in the demonstration of significant invariance. It is obviously easy to state that delineating the conditions of invariance for any phenomenon would tell us all we want to know about it, but the experimental task itself is uphill work.
+                    </p>
+                </div>
+            </section>
+
+  </main>
+
+  <script>
+    // A function to check if notes are already unlocked in localStorage
+    function checkNotesStatus() {
+      // Check for the 'notes_unlocked' flag in localStorage
+      if (localStorage.getItem('notes_unlocked') === 'true') {
+        const mainContent = document.getElementById('main-content');
+        const notesSection = document.getElementById('notes-section');
+        
+        // Immediately hide the tasks and show the notes without animations for returning users.
+        mainContent.classList.add('hidden');
+        notesSection.classList.remove('hidden');
+        // FIX: Ensure section is fully visible by removing the opacity-0 class. This makes the logic consistent.
+        notesSection.classList.remove('opacity-0');
+        
+        // Scroll to the top of the notes section
+        window.scrollTo({ top: notesSection.offsetTop, behavior: 'auto' });
+      }
+    }
+
+    // Call this function on page load to check for the flag
+    window.onload = checkNotesStatus;
+
+    function unlockTask(taskNumber) {
+      const nextTask = document.getElementById('task' + taskNumber);
+      if(nextTask) {
+        nextTask.classList.remove('locked');
+        window.scrollTo({ top: nextTask.offsetTop - 50, behavior: 'smooth' });
+      }
+    }
+
+    function unlockFinal() {
+      const finalStep = document.getElementById('final-step');
+      finalStep.classList.remove('hidden');
+      // Scroll to the final step for a smooth transition
+      window.scrollTo({ top: finalStep.offsetTop - 50, behavior: 'smooth' });
+    }
+    
+    // This function handles the transition to the notes section
+    function showNotes() {
+      const mainContent = document.getElementById('main-content');
+      const notesSection = document.getElementById('notes-section');
+      
+      // Store the flag in localStorage so future visits go directly to notes
+      localStorage.setItem('notes_unlocked', 'true');
+      
+      // Add a fade-out class to the main content
+      mainContent.classList.add('fade-out');
+      
+      // After the fade-out transition, hide the content and show the notes
+      setTimeout(() => {
+        mainContent.classList.add('hidden');
+        notesSection.classList.remove('hidden');
+        // This was the original fix and is correct: remove the class that keeps it invisible before adding the fade-in class
+        notesSection.classList.remove('opacity-0');
+        notesSection.classList.add('fade-in');
+        
+        // Scroll to the top of the notes section for a smooth effect
+        window.scrollTo({ top: notesSection.offsetTop, behavior: 'smooth' });
+      }, 500); // This delay should match the CSS transition duration
+    }
+
+    // Shows a temporary message for successful clipboard copy
+    function showMessage(msg) {
+        const messageBox = document.getElementById('clipboard-message');
+        messageBox.textContent = msg;
+        messageBox.classList.add('show');
+        setTimeout(() => {
+            messageBox.classList.remove('show');
+        }, 2000); // Message disappears after 2 seconds
+    }
+
+    function copyPrompt(promptId) {
+      const promptText = document.getElementById(promptId).innerText;
+      // Create a temporary textarea to hold the text
+      const tempInput = document.createElement('textarea');
+      tempInput.value = promptText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      
+      try {
+        // Use the execCommand to copy the text
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showMessage('Prompt copied to clipboard!');
+        } else {
+          showMessage('Failed to copy prompt.');
+        }
+      } catch (err) {
+        // Fallback for older browsers or environments that don't support execCommand
+        showMessage('Failed to copy. Please copy manually.');
+      }
+      
+      // Remove the temporary textarea
+      document.body.removeChild(tempInput);
+    }
+  </script>
+</body>
+</html>
+
