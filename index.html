@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1024">
+<meta name="viewport" content="width=1024">
   <title>Google Student Ambassador Engagement Flow</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,16 +74,22 @@
     <!-- All content for the main tasks and thank you message -->
     <div id="main-content">
       <!-- Beginning Page - Updated Section -->
-      <header class="bg-gradient-to-r from-[#005f73] to-[#0a9396] text-white py-16 px-4 text-center rounded-3xl mb-12 shadow-lg">
-        <h1 class="text-5xl md:text-6xl font-black uppercase tracking-wide leading-tight">Elevate Your Studies: Unlock Major 11 Notes!</h1>
+      <header class="bg-gradient-to-r from-[#005f73] to-[#0a9396] text-white py-10 px-4 text-center rounded-3xl mb-12 shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-black uppercase tracking-wide leading-tight">Elevate Your Studies: Unlock Major 11 Notes!</h1>
         <p class="text-lg text-white mt-4 max-w-2xl mx-auto opacity-80">
-          As a Google Student Ambassador, I am working to drive user engagement with Google Gemini. Your participation in these quick, simple tasks is greatly appreciated and helps me achieve my goals.
-          <br>Once you complete all five tasks, you will unlock full access to my complete Major 11 notes.
+          Your participation in these quick, simple tasks is greatly appreciated and helps me, as a Google Student Ambassador, achieve my goals of driving user engagement with Google Gemini.
         </p>
-        <p class="text-2xl md:text-3xl mt-6 font-bold tracking-tight text-yellow-300">
+        <p class="text-xl md:text-2xl mt-6 font-bold tracking-tight text-yellow-300">
           Your valuable support is needed. The process takes less than 3 minutes.
         </p>
       </header>
+      
+      <!-- New Container for Permanent Access -->
+      <section class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-6 my-6 text-center rounded-lg shadow-md">
+        <p class="font-semibold text-lg">
+          Upon successful completion of all tasks, you will gain <span class="text-yellow-900">permanent access to the notes.</span> For future visits, your browser will remember your progress, and you will be redirected to the notes page automatically, bypassing the need to complete the tasks again on this device.
+        </p>
+      </section>
 
       <!-- Instructions -->
       <section class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-12">
@@ -91,7 +97,7 @@
         <ol class="list-decimal list-inside space-y-2 text-[#001219]">
           <li>Click the first button below and wait for the Gemini prompt to fully load.</li>
           <li>If the prompt does not run automatically, please wait and check the chatbox – the prompt will appear there. Just hit the 'Send' button to start it.</li>
-          <li>⚠ Important: In some cases, nothing may happen. Before clicking the "launch prompt" button, copy the prompt text, then paste it into Gemini manually and click the button again.</li>
+          <li>⚠ Important: In some cases, nothing may happen. Before clicking the "Launch Prompt" button, you may first copy the prompt text and paste it manually into Gemini, then click the button again.</li>
           <li>Once the prompt has run successfully, please take a screenshot of the loaded prompt and upload it on this page.</li>
           <li>After uploading, the next task will automatically unlock for you.</li>
         </ol>
@@ -209,7 +215,7 @@
       <!-- Final Step (hidden by default) -->
       <section id="final-step" class="bg-[#005f73] text-white rounded-lg shadow-lg p-6 md:p-8 mt-12 text-center hidden">
         <h2 class="text-3xl font-bold mb-4">🎉 Thank You!</h2>
-        <p class="text-lg mb-4">Thank you very much for your support! I am so glad you completed all tasks. 🙏</p>
+        <p class="text-lg mb-4">Thank you very much for your support! I am so glad you completed all tasks. You now have permanent access to these notes, and the next time you visit this page, you will be taken directly to them. 🙏</p>
         <button onclick="showNotes()" class="block w-full text-center bg-[#0a9396] hover:bg-[#94d2bd] px-8 py-6 rounded-lg text-2xl font-bold transition-all duration-500 ease-in-out">
           Continue to Notes
         </button>
@@ -1855,5 +1861,4 @@
   </script>
 </body>
 </html>
-
 
