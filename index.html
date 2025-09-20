@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=1024">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google Student Ambassador Engagement Flow</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,6 +63,20 @@
     .hidden {
       display: none;
     }
+    /* New style for the confirmation button */
+    .confirm-btn {
+      background-color: #2a9d8f;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+    }
+    .confirm-btn:hover {
+      background-color: #264653;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body class="px-4 py-12">
@@ -77,13 +91,20 @@
       <header class="bg-gradient-to-r from-[#005f73] to-[#0a9396] text-white py-10 px-4 text-center rounded-3xl mb-12 shadow-lg">
         <h1 class="text-4xl md:text-5xl font-black uppercase tracking-wide leading-tight">Elevate Your Studies: Unlock Major 11 Notes!</h1>
         <p class="text-lg text-white mt-4 max-w-2xl mx-auto opacity-80">
-          Your participation in these quick, simple tasks is greatly appreciated and helps me, as a Google Student Ambassador, achieve my goals of driving user engagement with Google Gemini.
+          Hello! I am a Google Student Ambassador, and my role is to help people discover the power of Google Gemini. I am trying to reach a target of engagement points, and for that, every interaction is very important to me.
         </p>
         <p class="text-xl md:text-2xl mt-6 font-bold tracking-tight text-yellow-300">
-          Your valuable support is needed. The process takes less than 3 minutes.
+          Your support matters to me a lot! When you scan the QR code or click the link, I get an engagement point. Please, help me reach my target as quickly as possible, and in return, you'll get full access to valuable notes.
         </p>
       </header>
       
+      <!-- New Data Safety Container -->
+      <section class="bg-gray-100 text-gray-800 p-6 my-6 text-center rounded-lg shadow-md">
+        <p class="font-medium text-sm md:text-base">
+          Your privacy is important! We want to reassure you that <span class="font-bold text-gray-900">no personal data is being collected</span>. This process is solely for me, as an ambassador, to get engagement points for Google. The QR code links are for tracking this engagement, and the screenshots you upload are only used for verification purposes.
+        </p>
+      </section>
+
       <!-- New Container for Permanent Access -->
       <section class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-6 my-6 text-center rounded-lg shadow-md">
         <p class="font-semibold text-lg">
@@ -95,11 +116,12 @@
       <section class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-12">
         <h2 class="text-3xl font-bold text-[#005f73] mb-4">Instructions Before Starting</h2>
         <ol class="list-decimal list-inside space-y-2 text-[#001219]">
-          <li>Click the first button below and wait for the Gemini prompt to fully load.</li>
-          <li>If the prompt does not run automatically, please wait and check the chatbox – the prompt will appear there. Just hit the 'Send' button to start it.</li>
-          <li>⚠ Important: In some cases, nothing may happen. Before clicking the "Launch Prompt" button, you may first copy the prompt text and paste it manually into Gemini, then click the button again.</li>
-          <li>Once the prompt has run successfully, please take a screenshot of the loaded prompt and upload it on this page.</li>
-          <li>After uploading, the next task will automatically unlock for you.</li>
+          <li>Click the first button below to start the Gemini prompt. Please wait for it to fully load.</li>
+          <li>If the prompt does not run automatically, check the chatbox—the prompt will be there. Just hit 'Send' to begin.</li>
+          <li>⚠ Important: In some cases, the prompt won't run automatically and may not be in the chatbox. We recommend you copy the prompt for each task before clicking the "Launch Prompt" button.</li>
+          <li>Once the prompt has run, please take a screenshot and upload it on this page.</li>
+          <li>After uploading the screenshot, click the Confirm Upload** button to unlock the next task.</li>
+          <li>Once you confirm, the next task will automatically unlock for you.</li>
         </ol>
         <p class="text-red-600 mt-4">⚠ If the internet is slow, please wait patiently for the prompt to finish loading. If you exit too quickly after scanning the QR code, you won’t be able to scan again (it will show as 'already scanned').</p>
       </section>
@@ -122,8 +144,9 @@
           </div>
           <label class="block mt-4">
             Upload Screenshot:
-            <input type="file" accept="image/*" onchange="unlockTask(2)">
+            <input type="file" accept="image/*" onchange="showConfirmBtn(1)">
           </label>
+          <button id="confirmBtn1" class="confirm-btn mt-4 hidden" onclick="unlockTask(2); scrollToSection('task2')">Confirm Upload</button>
           <p class="mt-2 text-xs text-gray-500">Upload screenshot to unlock Task 2</p>
         </div>
 
@@ -143,8 +166,9 @@
           </div>
           <label class="block mt-4">
             Upload Screenshot:
-            <input type="file" accept="image/*" onchange="unlockTask(3)">
+            <input type="file" accept="image/*" onchange="showConfirmBtn(2)">
           </label>
+          <button id="confirmBtn2" class="confirm-btn mt-4 hidden" onclick="unlockTask(3); scrollToSection('task3')">Confirm Upload</button>
           <p class="mt-2 text-xs text-gray-500">Unlocks after Task 1 screenshot upload</p>
         </div>
 
@@ -164,8 +188,9 @@
           </div>
           <label class="block mt-4">
             Upload Screenshot:
-            <input type="file" accept="image/*" onchange="unlockTask(4)">
+            <input type="file" accept="image/*" onchange="showConfirmBtn(3)">
           </label>
+          <button id="confirmBtn3" class="confirm-btn mt-4 hidden" onclick="unlockTask(4); scrollToSection('task4')">Confirm Upload</button>
           <p class="mt-2 text-xs text-gray-500">Unlocks after Task 2 screenshot upload</p>
         </div>
 
@@ -185,8 +210,9 @@
           </div>
           <label class="block mt-4">
             Upload Screenshot:
-            <input type="file" accept="image/*" onchange="unlockTask(5)">
+            <input type="file" accept="image/*" onchange="showConfirmBtn(4)">
           </label>
+          <button id="confirmBtn4" class="confirm-btn mt-4 hidden" onclick="unlockTask(5); scrollToSection('task5')">Confirm Upload</button>
           <p class="mt-2 text-xs text-gray-500">Unlocks after Task 3 screenshot upload</p>
         </div>
 
@@ -206,8 +232,9 @@
           </div>
           <label class="block mt-4">
             Upload Screenshot:
-            <input type="file" accept="image/*" onchange="unlockFinal()">
+            <input type="file" accept="image/*" onchange="showConfirmBtn(5)">
           </label>
+          <button id="confirmBtn5" class="confirm-btn mt-4 hidden" onclick="unlockFinal(); scrollToSection('final-step')">Confirm Upload</button>
           <p class="mt-2 text-xs text-gray-500">Unlocks after Task 4 screenshot upload</p>
         </div>
       </section>
@@ -1755,7 +1782,7 @@
         <p class="text-1xl md:text-2xl font-bold mb-2">
             This content was curated and created by <span class="highlight-name">Tushar Joshi</span>, a Google Student Ambassador. Your support is greatly appreciated.
         </p>
-           <p class="text-1xl md:text-2xl font-bold mb-2">
+           <p class="text-2xl md:text-3xl font-bold mb-4">
 Also, if you really want to know how to create webpages like this or use AI in the most efficient manner to improve your skills in AI, then you can mail me your full name on <span class="font-bold text-[#0a9396]">studentambassadormsu@gmail.com</span> and you will receive the Student guide specially created by Google for Google Student Ambassadors. You can't find that online anywhere. You will also receive an official certificate from Google.
                     </p>
         <a href="https://www.linkedin.com/in/joshi091204" target="_blank" class="credit-btn">
@@ -1787,7 +1814,19 @@ Also, if you really want to know how to create webpages like this or use AI in t
 
     // Call this function on page load to check for the flag
     window.onload = checkNotesStatus;
+function showConfirmBtn(taskNumber) {
+      const confirmBtn = document.getElementById('confirmBtn' + taskNumber);
+      if (confirmBtn) {
+        confirmBtn.classList.remove('hidden');
+      }
+    }
 
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        window.scrollTo({ top: section.offsetTop - 50, behavior: 'smooth' });
+      }
+    }
     function unlockTask(taskNumber) {
       const nextTask = document.getElementById('task' + taskNumber);
       if(nextTask) {
