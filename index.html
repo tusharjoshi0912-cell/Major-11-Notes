@@ -137,6 +137,9 @@
           <h2 class="text-2xl font-bold text-[#005f73] mb-3">🎨 Task 1</h2>
           <p class="mb-2 font-semibold">Prompt:</p>
           <p id="prompt1" class="mb-2">Ask me 5 short and simple, multiple choice questions about my personality, one by one, and then tell me what famous artist or designer I am most like.</p>
+          <p style="color:red; font-weight:bold;">
+The 1st question runs automatically — no need to answer all 5 questions. Once the prompt runs, your work is done.
+          </p>
           <button class="copy-btn" onclick="copyPrompt('prompt1')">Copy Prompt</button>
           <a href="https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=17" target="_blank" class="block mt-4">
             <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aiskillshouse.com/student/qr-mediator.html?uid=1919&promptId=17" alt="Task 1 QR Code">
@@ -1925,6 +1928,7 @@ function showConfirmBtn(taskNumber) {
   </script>
 </body>
 </html>
+
 
 
 
